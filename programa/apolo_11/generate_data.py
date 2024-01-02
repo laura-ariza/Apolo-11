@@ -2,12 +2,10 @@ from generate_data.date import generate_date
 from generate_data.device_status import generate_device_status 
 from generate_data.device import generate_device
 from generate_data.mission import generate_mission 
-from datetime import datetime
+from generate_data.hash import generate_hash
 import random
-#https://docs.python.org/es/3/library/hashlib.html
-#Hashlib:this module implements a common interface to many different secure hash and message digest algorithms.
-import hashlib
 import yaml
+
 
 def generate_data():
 
@@ -15,20 +13,16 @@ def generate_data():
     unkn: str = "UNKN"
     
     if mission == unkn:
-        now_date: datetime = generate_date()
+        now_date = generate_date()
         device: str = "unknown"
         device_status: str = "unknown"
         
     else: 
-        now_date: datetime = generate_date()
+        now_date = generate_date()
         device: str = generate_device()
         device_status: str = generate_device_status()
-        #concatenate relevant data to generate the hash
-        hash_data = f"{now_date}{value_mission}{device}{device_status}"
-        #apply hash SHA-256 to concatenated data
-        hash_value = hashlib.sha256(hash_data.encode()).hexdigest()
+        hash = generate_hash(now_date, value_mission, device, device_status)
 
-    #files = f"APL{mission}-0000{random.randint(1, 1000)}.log"
     files = f"APL{mission}-0000{random.randint(1, 1000)}.yaml"
     
     '''
