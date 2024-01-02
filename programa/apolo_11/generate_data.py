@@ -4,6 +4,7 @@ from generate_data.device import generate_device
 from generate_data.mission import generate_mission 
 from generate_data.hash import generate_hash
 import random
+import yaml
 
 
 def generate_data():
@@ -22,14 +23,27 @@ def generate_data():
         device_status: str = generate_device_status()
         hash = generate_hash(now_date, value_mission, device, device_status)
 
-    files = f"APL{mission}-0000{random.randint(1, 1000)}.log"
+    files = f"APL{mission}-0000{random.randint(1, 1000)}.yaml"
     
+    '''
     with open(files, 'w') as file:
         file.write(f"Date: {now_date}\n")
         file.write(f"Mission: {value_mission}\n")
         file.write(f"Device: {device}\n")
         file.write(f"Device status: {device_status}\n")
         file.write(f"Hash: {hash}\n")
+    '''
+    
+    with open(files, 'w') as file:
+        data = {
+            'Date': now_date,
+            'Mission': value_mission,
+            'Device': device,
+            'Device Status': device_status,
+            'Hash': hash_value
+        }
+        yaml.dump(data, file)        
+        
 
 min: int = 1 
 max: int = 3
