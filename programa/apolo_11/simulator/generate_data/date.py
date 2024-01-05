@@ -1,6 +1,6 @@
 from datetime import datetime
 
-def generate_date() -> datetime:
+def gen_date() -> datetime: #change the name of the function
     
     #current date and time 
     now: datetime = datetime.now()
