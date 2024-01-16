@@ -30,12 +30,11 @@ def main():
     print("Press 'Ctrl+C' to stop the program.")
     
     #file_path = "../apolo_11/path_test.py"
-    
+    dir_path = new_dir()
     while True:
-        dir_path = new_dir()
         gd.files_create(dir_path)
         #run_file(file_path)
-        time.sleep(5)
+        time.sleep(1)
         
 
 if __name__ == "__main__":
