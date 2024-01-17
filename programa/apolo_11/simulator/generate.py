@@ -49,7 +49,7 @@ def generate_data(dir_path):
         
 def files_create(dir_path):
     min: int = 1 
-    max: int = 100
+    max: int = 3
     number_files: int = random.randint(min, max)
 
     for i in range(number_files):

@@ -34,7 +34,7 @@ def main():
     while True:
         gd.files_create(dir_path)
         #run_file(file_path)
-        time.sleep(1)
+        time.sleep(5)
         
 
 if __name__ == "__main__":
