@@ -26,6 +26,7 @@ def generate_data(dir_path):
         hash = generate_hash(now_date, value_mission, device, device_status)
 
     files = f"APL{mission}-0000{random.randint(1, 1000)}.log"
+
     full_path = os.path.join(dir_path, files)
  
     with open(full_path, 'w') as file:
