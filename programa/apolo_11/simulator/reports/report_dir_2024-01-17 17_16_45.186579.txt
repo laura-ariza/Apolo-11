@@ -1,0 +1,369 @@
+Summary:
+  File 1 Summary:
+    Date: 17-01-2024 17:16:55
+    Mission: Unknown
+    Device: unknown
+    Device Status: unknown
+    Hash: unknown
+
+  File 2 Summary:
+    Date: 17-01-2024 17:16:55
+    Mission: ColonyMoon
+    Device: satellites
+    Device Status: warning
+    Hash: 6eda35dfbc41da657e536eba8229cfad7ee262c3efd7fdda320ee361ee9804f5
+
+  File 3 Summary:
+    Date: 17-01-2024 17:16:55
+    Mission: ColonyMoon
+    Device: vehicles
+    Device Status: unknown
+    Hash: f6833dcd9d0208502972b21bb2d6fc8662505115610cf4b42fbbf01035fe9390
+
+  File 4 Summary:
+    Date: 17-01-2024 17:17:00
+    Mission: ColonyMoon
+    Device: airplanes
+    Device Status: unknown
+    Hash: d080bf1764941500b2ecd22434163dd56331b9301a39f1f70bebd11f8ff26c78
+
+  File 5 Summary:
+    Date: 17-01-2024 17:17:00
+    Mission: VacMars
+    Device: suits
+    Device Status: killed
+    Hash: 7d98ddd05b9a81d5ec8de733ff5f7a44de2f1e11568e866893abfa27405efd71
+
+  File 6 Summary:
+    Date: 17-01-2024 17:16:45
+    Mission: ColonyMoon
+    Device: satellites
+    Device Status: killed
+    Hash: 264b8a605ebf8f6021e24178f7b9d0fd0286ef0ce3101dcf5d19bd71eb59f11b
+
+  File 7 Summary:
+    Date: 17-01-2024 17:16:50
+    Mission: ColonyMoon
+    Device: airplanes
+    Device Status: faulty
+    Hash: e15734af45238251bce3ebcf57f3c7dafa2d565da0412bf9b7b9cfd8c0d3ea8a
+
+  File 8 Summary:
+    Date: 17-01-2024 17:16:45
+    Mission: VacMars
+    Device: vehicles
+    Device Status: killed
+    Hash: e167af263222b7eca2edb00452740b7f06a49a301f17a31291425941d09d40d0
+
+  File 9 Summary:
+    Date: 17-01-2024 17:16:45
+    Mission: VacMars
+    Device: satellites
+    Device Status: warning
+    Hash: 9172847ba0b39a5a926db41abf253f0eef7fb86234ad449444fefbed0ae8bae2
+
+  File 10 Summary:
+    Date: 17-01-2024 17:16:50
+    Mission: ColonyMoon
+    Device: satellites
+    Device Status: unknown
+    Hash: aac80370b00b6ebe351bd82de6a1d6073ec724e57616409198990f24adebdf6e
+
+  File 11 Summary:
+    Date: 17-01-2024 17:16:45
+    Mission: Unknown
+    Device: unknown
+    Device Status: unknown
+    Hash: unknown
+
+  File 12 Summary:
+    Date: 17-01-2024 17:16:45
+    Mission: GalaxyTwo
+    Device: satellites
+    Device Status: warning
+    Hash: 314252db11db85896d2bc919927864e0556af7ceb274736ff9dd371101a50f0e
+
+  File 13 Summary:
+    Date: 17-01-2024 17:16:55
+    Mission: ColonyMoon
+    Device: suits
+    Device Status: faulty
+    Hash: d5b286f346885dd70afc9880280b6fddd4cfead172818e9105684a0ed4060997
+
+  File 14 Summary:
+    Date: 17-01-2024 17:16:55
+    Mission: OrbitOne
+    Device: airplanes
+    Device Status: faulty
+    Hash: 230d68b0a06533b334da47a90f24dd248fd985f6248616882e626dd185e9c8b7
+
+  File 15 Summary:
+    Date: 17-01-2024 17:16:55
+    Mission: VacMars
+    Device: vehicles
+    Device Status: faulty
+    Hash: 890ae915aa537a29d9eef5b87dfbcf3253c30dbddb23d64b20e457214c8d7bf2
+
+  File 16 Summary:
+    Date: 17-01-2024 17:17:00
+    Mission: Unknown
+    Device: unknown
+    Device Status: unknown
+    Hash: unknown
+
+  File 17 Summary:
+    Date: 17-01-2024 17:16:45
+    Mission: GalaxyTwo
+    Device: satellites
+    Device Status: good
+    Hash: 92045cc0a7591b8c41f39f4c9b2cce23986c50b9d8cea51cb4dfb6e8b53e0e6c
+
+  File 18 Summary:
+    Date: 17-01-2024 17:16:45
+    Mission: Unknown
+    Device: unknown
+    Device Status: unknown
+    Hash: unknown
+
+  File 19 Summary:
+    Date: 17-01-2024 17:16:55
+    Mission: ColonyMoon
+    Device: satellites
+    Device Status: excellent
+    Hash: c42d8e662e66ed116b9357f9828bb939aded640e4058fb161598d70ec3560eb8
+
+  File 20 Summary:
+    Date: 17-01-2024 17:16:55
+    Mission: GalaxyTwo
+    Device: satellites
+    Device Status: good
+    Hash: 9f35700320ff75de63506a5e9f4c44e50b76fe2b64a10f4db95ff103fd013973
+
+  File 21 Summary:
+    Date: 17-01-2024 17:16:50
+    Mission: OrbitOne
+    Device: airplanes
+    Device Status: warning
+    Hash: 4fceb9dc4a66a0f92d338aab15c3a15c8d231f9fb1c8fb5fdd6d9895c7ba47d2
+
+  File 22 Summary:
+    Date: 17-01-2024 17:16:50
+    Mission: OrbitOne
+    Device: vehicles
+    Device Status: warning
+    Hash: 60ee5b27d45668d0c794bf4be67ce3e66883f80ed76f84207e46f3962d069918
+
+  File 23 Summary:
+    Date: 17-01-2024 17:16:50
+    Mission: ColonyMoon
+    Device: airplanes
+    Device Status: killed
+    Hash: e4ba3e44ec6fe0576990b23fecbf1900754879103805bdf0bfdea9638a77f6fc
+
+  File 24 Summary:
+    Date: 17-01-2024 17:16:50
+    Mission: ColonyMoon
+    Device: vehicles
+    Device Status: killed
+    Hash: e281650aea052342bf8e2ae370f9878fdfcf27cdf56df62d5f86e4d2258bff63
+
+  File 25 Summary:
+    Date: 17-01-2024 17:16:45
+    Mission: Unknown
+    Device: unknown
+    Device Status: unknown
+    Hash: unknown
+
+  File 26 Summary:
+    Date: 17-01-2024 17:16:55
+    Mission: VacMars
+    Device: airplanes
+    Device Status: unknown
+    Hash: 5677fd7053eea132df588e49e5b1c3b53d13113fe70c38f6607aba14cbfdfb1d
+
+  File 27 Summary:
+    Date: 17-01-2024 17:16:45
+    Mission: ColonyMoon
+    Device: satellites
+    Device Status: good
+    Hash: 423ac944d395e20a2d61cb38d14c22c1b11cd75d44dc45892c79b9b3c117a333
+
+  File 28 Summary:
+    Date: 17-01-2024 17:16:55
+    Mission: VacMars
+    Device: vehicles
+    Device Status: faulty
+    Hash: 890ae915aa537a29d9eef5b87dfbcf3253c30dbddb23d64b20e457214c8d7bf2
+
+  File 29 Summary:
+    Date: 17-01-2024 17:16:55
+    Mission: OrbitOne
+    Device: vehicles
+    Device Status: unknown
+    Hash: 581a63e6d10fe6eedf814bb6cbc6b432dec7d2613396f1aa24ffb9970fac603e
+
+  File 30 Summary:
+    Date: 17-01-2024 17:16:50
+    Mission: VacMars
+    Device: satellites
+    Device Status: good
+    Hash: 903b1647d758ad037715b37ed06e7d74afc67062c099acc75435ec0badb1bfeb
+
+  File 31 Summary:
+    Date: 17-01-2024 17:16:45
+    Mission: ColonyMoon
+    Device: airplanes
+    Device Status: good
+    Hash: 4c0d309316921dd7cea031fe3e6cd098283b0b6acb1683d6bb774d071222ec0f
+
+  File 32 Summary:
+    Date: 17-01-2024 17:16:45
+    Mission: OrbitOne
+    Device: suits
+    Device Status: killed
+    Hash: fe6355e29692affa855500bb84a1e47c86dcdcb294763b3c9cd51c819a210e4d
+
+  File 33 Summary:
+    Date: 17-01-2024 17:16:55
+    Mission: VacMars
+    Device: vehicles
+    Device Status: excellent
+    Hash: 1cdd8f7d3f0f6087cb5f90b6d9b324021d6b044b46ffe8508878f6cc871f8229
+
+  File 34 Summary:
+    Date: 17-01-2024 17:16:45
+    Mission: OrbitOne
+    Device: suits
+    Device Status: faulty
+    Hash: 539914455cd9cb24b8fe9b0f8b59e8b7810a24b63b2df756bbad4e5a503dd922
+
+  File 35 Summary:
+    Date: 17-01-2024 17:16:55
+    Mission: OrbitOne
+    Device: satellites
+    Device Status: unknown
+    Hash: 4e8deef23a196119e60db468229224aa46c72c9b2ed31e7b8872935cd0f21ea8
+
+  File 36 Summary:
+    Date: 17-01-2024 17:16:50
+    Mission: GalaxyTwo
+    Device: satellites
+    Device Status: unknown
+    Hash: bfe90030ce99c1c065bfdfacd3c63c748eb2f10de340ce3293eb2eb3b7a4037f
+
+  File 37 Summary:
+    Date: 17-01-2024 17:16:55
+    Mission: OrbitOne
+    Device: vehicles
+    Device Status: faulty
+    Hash: d50910e6da2289b60321bfc5c12d5acbef9fc5bb2b29bec5e0323d751fe126ea
+
+  File 38 Summary:
+    Date: 17-01-2024 17:16:45
+    Mission: Unknown
+    Device: unknown
+    Device Status: unknown
+    Hash: unknown
+
+  File 39 Summary:
+    Date: 17-01-2024 17:16:55
+    Mission: VacMars
+    Device: satellites
+    Device Status: excellent
+    Hash: f23c3fdea145197a09e1bcff466b6663e70f136848d252a86ea1b1141a0bd39d
+
+  File 40 Summary:
+    Date: 17-01-2024 17:16:50
+    Mission: Unknown
+    Device: unknown
+    Device Status: unknown
+    Hash: unknown
+
+  File 41 Summary:
+    Date: 17-01-2024 17:16:50
+    Mission: GalaxyTwo
+    Device: satellites
+    Device Status: unknown
+    Hash: bfe90030ce99c1c065bfdfacd3c63c748eb2f10de340ce3293eb2eb3b7a4037f
+
+  File 42 Summary:
+    Date: 17-01-2024 17:16:45
+    Mission: ColonyMoon
+    Device: airplanes
+    Device Status: excellent
+    Hash: 66e1daa93fcdd15e0ff698e946d85e7d755a03df36d2a6ad1df5e7a15657073e
+
+  File 43 Summary:
+    Date: 17-01-2024 17:16:50
+    Mission: ColonyMoon
+    Device: suits
+    Device Status: excellent
+    Hash: 6fc01200c2c591f511cf0388620dd584da18ab441c6f22c8c639ba55ae262e4b
+
+  File 44 Summary:
+    Date: 17-01-2024 17:16:50
+    Mission: ColonyMoon
+    Device: airplanes
+    Device Status: killed
+    Hash: e4ba3e44ec6fe0576990b23fecbf1900754879103805bdf0bfdea9638a77f6fc
+
+
+Device Counts:
+  Mission: Unknown
+    unknown: 7
+      unknown Status: unknown: 7
+
+  Mission: ColonyMoon
+    satellites: 5
+      satellites Status: warning: 1
+      satellites Status: killed: 1
+      satellites Status: unknown: 1
+      satellites Status: excellent: 1
+      satellites Status: good: 1
+    vehicles: 2
+      vehicles Status: unknown: 1
+      vehicles Status: killed: 1
+    airplanes: 6
+      airplanes Status: unknown: 1
+      airplanes Status: faulty: 1
+      airplanes Status: killed: 2
+      airplanes Status: good: 1
+      airplanes Status: excellent: 1
+    suits: 2
+      suits Status: faulty: 1
+      suits Status: excellent: 1
+
+  Mission: VacMars
+    suits: 1
+      suits Status: killed: 1
+    vehicles: 4
+      vehicles Status: killed: 1
+      vehicles Status: faulty: 2
+      vehicles Status: excellent: 1
+    satellites: 3
+      satellites Status: warning: 1
+      satellites Status: good: 1
+      satellites Status: excellent: 1
+    airplanes: 1
+      airplanes Status: unknown: 1
+
+  Mission: GalaxyTwo
+    satellites: 5
+      satellites Status: warning: 1
+      satellites Status: good: 2
+      satellites Status: unknown: 2
+
+  Mission: OrbitOne
+    airplanes: 2
+      airplanes Status: faulty: 1
+      airplanes Status: warning: 1
+    vehicles: 3
+      vehicles Status: warning: 1
+      vehicles Status: unknown: 1
+      vehicles Status: faulty: 1
+    suits: 2
+      suits Status: killed: 1
+      suits Status: faulty: 1
+    satellites: 1
+      satellites Status: unknown: 1
+
