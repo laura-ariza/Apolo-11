@@ -14,12 +14,12 @@ def generate_data(dir_path):
     hash: str = "unknown"
     
     if mission == unkn:
-        now_date = gen_date()
+        now_date: str = gen_date()
         device: str = "unknown"
         device_status: str = "unknown"
         
     else: 
-        now_date = gen_date()
+        now_date: str = gen_date()
         device: str = generate_device()
         device_status: str = generate_device_status()
         hash = generate_hash(now_date, value_mission, device, device_status)

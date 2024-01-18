@@ -1,10 +1,18 @@
 import random 
 
 def generate_device_status() -> str:
-    
-    #list of device status
-    opcion_status: list[str] = ["excellent", "good","warning", "faulty", "killed", "unknown"]
-    
-    #device status randomization 
-    device_status:str = random.choice(opcion_status)
-    return device_status
+    """Generates a random device status.
+
+    Returns:
+        str: A random device status from a list of options.
+    """
+    try:
+        # List of device status
+        option_status: list[str] = ["excellent", "good", "warning", "faulty", "killed", "unknown"]
+        
+        # Device status randomization 
+        device_status: str = random.choice(option_status)
+        return device_status
+    except Exception as e:
+        print(f"An error occurred: {e}")
+        

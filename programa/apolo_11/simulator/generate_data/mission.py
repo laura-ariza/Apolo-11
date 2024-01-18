@@ -1,6 +1,8 @@
 import random 
 
-def generate_mission() -> dict:
+
+
+def generate_mission() -> str:
     
     #dictionary with key: name of completed missions and
     #value: abbreviation missions  
@@ -20,3 +22,4 @@ def generate_mission() -> dict:
             value_mission = item
             
     return mission, value_mission
+
