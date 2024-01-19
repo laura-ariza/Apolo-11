@@ -1,10 +1,9 @@
-from generate_data.date import gen_date 
+from generate_data.date import generate_date
 from generate_data.device_status import generate_device_status 
 from generate_data.device import generate_device
 from generate_data.mission import  Mission_Generator
 from generate_data.hash import generate_hash
 import random
-import yaml
 import os
 import json
 
@@ -19,12 +18,12 @@ def generate_data(dir_path):
     hash: str = "unknown"
     
     if mission == unkn:
-        now_date: str = gen_date()
+        now_date: str = generate_date()
         device: str = "unknown"
         device_status: str = "unknown"
         
     else: 
-        now_date: str = gen_date()
+        now_date: str = generate_date()
         device: str = generate_device()
         device_status: str = generate_device_status()
         hash = generate_hash(now_date, value_mission, device, device_status)
