@@ -86,7 +86,7 @@ def create_reports(subfolder_reports):
 
 
 # Esta ruta se debe reemplazar con la ruta relativa "devices" para que funcione en otras máquinas
-directory_path = '/Users/santiago.munoz/Documents/GitHub clone/Apolo-11/programa/apolo_11/simulator/devices'
+#  directory_path = '/Users/santiago.munoz/Documents/GitHub clone/Apolo-11/programa/apolo_11/simulator/devices'
 
 subfolder_reports = process_files(directory_path)
 create_reports(subfolder_reports)
