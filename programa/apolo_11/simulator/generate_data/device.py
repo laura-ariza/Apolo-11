@@ -1,10 +1,14 @@
 import random 
 
+
 def generate_device() -> str:
-    """_summary_
+    """Generate a random device type from a predefined list.
 
     Returns:
-        str: _description_
+        str: Randomly selected device type from options.
+    
+    Raises:
+        Exception: If an error occurs during device generation.
     """
     try:
         # List of device options 

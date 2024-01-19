@@ -1,7 +1,7 @@
 from generate_data.date import gen_date 
 from generate_data.device_status import generate_device_status 
 from generate_data.device import generate_device
-from generate_data.mission import generate_mission 
+from generate_data.mission import  Mission_Generator
 from generate_data.hash import generate_hash
 import random
 import yaml
@@ -9,7 +9,11 @@ import os
 
 def generate_data(dir_path):
 
-    mission, value_mission = generate_mission()
+    mission_generator: Mission_Generator = Mission_Generator()
+    mission: str
+    value_mission: str
+    mission, value_mission = mission_generator.generate_mission()
+
     unkn: str = "UNKN"
     hash: str = "unknown"
     

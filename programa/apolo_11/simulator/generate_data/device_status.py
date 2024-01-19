@@ -1,10 +1,14 @@
 import random 
 
+
 def generate_device_status() -> str:
     """Generates a random device status.
 
     Returns:
         str: A random device status from a list of options.
+    
+    Raises:
+        Exception: If an error occurs during device status generation.
     """
     try:
         # List of device status

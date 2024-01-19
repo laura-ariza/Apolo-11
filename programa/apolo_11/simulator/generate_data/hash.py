@@ -1,18 +1,20 @@
-#https://docs.python.org/es/3/library/hashlib.html
-#Hashlib:this module implements a common interface to many different secure hash and message digest algorithms.
 import hashlib
+
 
 def generate_hash(now_date, value_mission, device, device_status) ->str:
     """This function generates a hash based on the input parameters.
 
     Args:
-        now_date (str): _description_
-        value_mission (str): _description_
-        device (str): _description_
-        device_status (str): _description_
+        now_date (str): Date of the mission.
+        value_mission (str): Mission value.
+        device (str): Type of device used.
+        device_status (str): Status of the device.
 
     Returns:
         str: The hash value.
+        
+    Raises:
+        Exception: If an error occurs during hash generation.
     """
     try:
         # Concatenate relevant data to generate the hash
