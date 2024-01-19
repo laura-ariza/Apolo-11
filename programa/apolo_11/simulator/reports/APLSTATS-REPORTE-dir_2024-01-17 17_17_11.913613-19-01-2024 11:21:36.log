@@ -1,0 +1,205 @@
+Summary:
+  File 1 Summary:
+    Date: 17-01-2024 17:17:16
+    Mission: GalaxyTwo
+    Device: airplanes
+    Device Status: good
+    Hash: 949da5b748cc9dbed7c41036518cf2169c5ca96549443aaad13860c764b2aab2
+
+  File 2 Summary:
+    Date: 17-01-2024 17:17:16
+    Mission: OrbitOne
+    Device: vehicles
+    Device Status: unknown
+    Hash: 44d80f84c4d0a26113fcc4b504bd1a7016e2f0bd48a531e0c8b4f5628c57e784
+
+  File 3 Summary:
+    Date: 17-01-2024 17:17:11
+    Mission: GalaxyTwo
+    Device: satellites
+    Device Status: good
+    Hash: 35c968b2b7f1cf16220a044b7ce588ae15b3a556068341bd67878911da0bfea2
+
+  File 4 Summary:
+    Date: 17-01-2024 17:17:16
+    Mission: Unknown
+    Device: unknown
+    Device Status: unknown
+    Hash: unknown
+
+  File 5 Summary:
+    Date: 17-01-2024 17:17:11
+    Mission: VacMars
+    Device: satellites
+    Device Status: faulty
+    Hash: 7ce589b9da3d42b35a88ff3abcfb1cc3845330083371bf1d4b609e22106b2f82
+
+  File 6 Summary:
+    Date: 17-01-2024 17:17:16
+    Mission: GalaxyTwo
+    Device: satellites
+    Device Status: good
+    Hash: 4341e50188bd90ac02fe2a3d4d408d2943a58f21bc2be450f529a0db9351f394
+
+  File 7 Summary:
+    Date: 17-01-2024 17:17:16
+    Mission: GalaxyTwo
+    Device: airplanes
+    Device Status: warning
+    Hash: dba1da9066333a605a91e748f07e05ec6aba8bf4a179cff402b94b12df66f92a
+
+  File 8 Summary:
+    Date: 17-01-2024 17:17:16
+    Mission: VacMars
+    Device: vehicles
+    Device Status: faulty
+    Hash: 1b00e02e0afccdc56d0deffd0c12feb1669dec102d07624d2f220400ca95a6d2
+
+  File 9 Summary:
+    Date: 17-01-2024 17:17:16
+    Mission: GalaxyTwo
+    Device: vehicles
+    Device Status: faulty
+    Hash: 381dd8014f2b4833da1799e72c83485d07995df794beb0ce7acb6dfe93359ce9
+
+  File 10 Summary:
+    Date: 17-01-2024 17:17:11
+    Mission: VacMars
+    Device: satellites
+    Device Status: warning
+    Hash: 286c987d58953af79a6b8a3c838dc9350cd43e93bbee7c2636ca604b325fe808
+
+  File 11 Summary:
+    Date: 17-01-2024 17:17:16
+    Mission: GalaxyTwo
+    Device: suits
+    Device Status: excellent
+    Hash: c032b5361d1bb43bf1a7feab94858b72974e07d2690301f9d65fab62b3c1320b
+
+  File 12 Summary:
+    Date: 17-01-2024 17:17:11
+    Mission: Unknown
+    Device: unknown
+    Device Status: unknown
+    Hash: unknown
+
+  File 13 Summary:
+    Date: 17-01-2024 17:17:16
+    Mission: Unknown
+    Device: unknown
+    Device Status: unknown
+    Hash: unknown
+
+  File 14 Summary:
+    Date: 17-01-2024 17:17:16
+    Mission: ColonyMoon
+    Device: suits
+    Device Status: warning
+    Hash: 5251c3d2010fb9c8772c3816a40d84fae38039c8ab1e78275d9859a59b7d1e0f
+
+  File 15 Summary:
+    Date: 17-01-2024 17:17:11
+    Mission: VacMars
+    Device: satellites
+    Device Status: unknown
+    Hash: 04f4fd6a703848ad63e3993097b0d13f340a3960f736b5d7f6064b039db7b71a
+
+  File 16 Summary:
+    Date: 17-01-2024 17:17:16
+    Mission: GalaxyTwo
+    Device: satellites
+    Device Status: killed
+    Hash: c4d0ff436cc8ff0fe983889b53a2ddbe9beeb6c506d891fb2c62ecf35e20cda5
+
+  File 17 Summary:
+    Date: 17-01-2024 17:17:16
+    Mission: VacMars
+    Device: vehicles
+    Device Status: unknown
+    Hash: 37288e7996ae8a2d5f1f2b524a7b239ddf4bee1816d2b3eec5fba7c96ef7f361
+
+  File 18 Summary:
+    Date: 17-01-2024 17:17:16
+    Mission: OrbitOne
+    Device: suits
+    Device Status: excellent
+    Hash: 5a8606e77d84d58e2024a6c0da688ead85a964e5ea8f0ad6e6e9f375533d136a
+
+  File 19 Summary:
+    Date: 17-01-2024 17:17:11
+    Mission: ColonyMoon
+    Device: airplanes
+    Device Status: good
+    Hash: 5791e4467f150ede8828c89995cce778609456557e55df721568a8049cbd46a3
+
+  File 20 Summary:
+    Date: 17-01-2024 17:17:11
+    Mission: OrbitOne
+    Device: suits
+    Device Status: good
+    Hash: fdf6acae0e435272fdb53b180c2daea7a9df0975e51bd6b28c7bb63f5275fa2f
+
+  File 21 Summary:
+    Date: 17-01-2024 17:17:11
+    Mission: VacMars
+    Device: suits
+    Device Status: warning
+    Hash: 2c6f0aa987bc9f7223ca7ecc36b5ee8dc34d2dbf0aadd8eac2361e9a9dd8bc2c
+
+  File 22 Summary:
+    Date: 17-01-2024 17:17:11
+    Mission: Unknown
+    Device: unknown
+    Device Status: unknown
+    Hash: unknown
+
+  File 23 Summary:
+    Date: 17-01-2024 17:17:16
+    Mission: GalaxyTwo
+    Device: vehicles
+    Device Status: unknown
+    Hash: b3ed4ef505728cf88a01fcb9feea88d25285813d73e3e11ad0127c045a9b39e9
+
+
+Device Counts:
+  Mission: GalaxyTwo
+    airplanes: 2
+      airplanes Status: good: 1
+      airplanes Status: warning: 1
+    satellites: 3
+      satellites Status: good: 2
+      satellites Status: killed: 1
+    vehicles: 2
+      vehicles Status: faulty: 1
+      vehicles Status: unknown: 1
+    suits: 1
+      suits Status: excellent: 1
+
+  Mission: OrbitOne
+    vehicles: 1
+      vehicles Status: unknown: 1
+    suits: 2
+      suits Status: excellent: 1
+      suits Status: good: 1
+
+  Mission: Unknown
+    unknown: 4
+      unknown Status: unknown: 4
+
+  Mission: VacMars
+    satellites: 3
+      satellites Status: faulty: 1
+      satellites Status: warning: 1
+      satellites Status: unknown: 1
+    vehicles: 2
+      vehicles Status: faulty: 1
+      vehicles Status: unknown: 1
+    suits: 1
+      suits Status: warning: 1
+
+  Mission: ColonyMoon
+    suits: 1
+      suits Status: warning: 1
+    airplanes: 1
+      airplanes Status: good: 1
+

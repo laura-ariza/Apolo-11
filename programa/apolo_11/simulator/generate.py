@@ -6,6 +6,7 @@ from generate_data.hash import generate_hash
 import random
 import yaml
 import os
+import json
 
 def generate_data(dir_path):
 
@@ -24,19 +25,10 @@ def generate_data(dir_path):
         device_status: str = generate_device_status()
         hash = generate_hash(now_date, value_mission, device, device_status)
 
-    files = f"APL{mission}-0000{random.randint(1, 1000)}.yaml"
-    print(files)
+    files = f"APL{mission}-0000{random.randint(1, 1000)}.log"
+
     full_path = os.path.join(dir_path, files)
-    
-    '''
-    with open(files, 'w') as file:
-        file.write(f"Date: {now_date}\n")
-        file.write(f"Mission: {value_mission}\n")
-        file.write(f"Device: {device}\n")
-        file.write(f"Device status: {device_status}\n")
-        file.write(f"Hash: {hash}\n")
-    '''
-    
+ 
     with open(full_path, 'w') as file:
         data = {
             'Date': now_date,
@@ -45,7 +37,7 @@ def generate_data(dir_path):
             'Device Status': device_status,
             'Hash': hash
         }
-        yaml.dump(data, file)       
+        json.dump(data, file, indent = 4)       
         
 def files_create(dir_path):
     min: int = 1 
