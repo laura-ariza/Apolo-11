@@ -1,10 +1,21 @@
 from datetime import datetime
 
-def gen_date() -> datetime: #change the name of the function
+
+def generate_date() -> str: # Change the name of the function
+    """This function generates a current date and time in the
+    format of "dd-mm-yyyy HH:MM:SS"
+    Returns:
+        str: A current date and time in the given format
     
-    #current date and time 
-    now: datetime = datetime.now()
-    
-    #date format change
-    date: datetime = now.strftime("%d-%m-%Y %H:%M:%S")
-    return date
+    Raises:
+        Exception: If an error occurs during date generation.
+    """
+    try:
+        # Current date and time
+        now: datetime = datetime.now()
+
+        # Date format change
+        date: str = now.strftime("%d-%m-%Y %H:%M:%S")
+        return date
+    except Exception as e:
+        print(f"An error occurred: {e}")
