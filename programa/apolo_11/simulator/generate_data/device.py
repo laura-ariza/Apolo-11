@@ -1,4 +1,5 @@
-import random 
+import random
+
 
 
 def generate_device() -> str:
