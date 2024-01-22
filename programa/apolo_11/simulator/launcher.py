@@ -9,12 +9,10 @@ count_executed: int = 1
 
 
 def new_dir_simulation(dir_path):
-    print("mira esto", dir_path)
     dir_name = "simulation_" + str(datetime.now()).replace(":", "_") # definir reglas de nombre de carpetas
     dir_path = os.path.join(dir_path, dir_name)
     if not os.path.isdir(dir_path):
         os.mkdir(dir_path)
-    print("este es el path" + dir_path)
     return dir_path
 
 # Create a directory and return the directory path
@@ -23,7 +21,6 @@ def new_dir_devices():
     absolute_path = os.path.dirname(__file__)
     dir_path = ""
     dir_path = os.path.join(absolute_path, dir_devices)
-    print("mira esto", dir_path)
     if not os.path.isdir(dir_path):
         os.mkdir(dir_path)
     return dir_path
@@ -49,7 +46,6 @@ def main():
     # Creation of options menu to generate simulation or reports
     print("¡Welcome to Apollo 11!","1. Simulation started","2. Generated reports", sep="\n")
     option = input("Type an option:")
-    print("")
     if option == "1":
         print("Run simulation...", "Press 'Ctrl+C' to stop the simulation.", sep="\n")
         while True:

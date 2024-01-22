@@ -15,14 +15,10 @@ def extract_all_keys(file_path):
 
 def process_files(directory):
     subfolder_reports = {}
-    '''print(directory, os.walk(directory))
-    for elemento in os.walk(directory):
-        print(elemento)'''
+    
     for root, _, files in os.walk(directory):
-
         # Usar la ruta relativa como nombre del subfolder
         subfolder_name = os.path.relpath(root, directory)
-        print(subfolder_name)
         # Procesar los archivos solo si están en subfolders
         if subfolder_name != '.':
             summary_data = []
@@ -88,4 +84,4 @@ def create_reports(subfolder_reports):
 
 
 # Esta ruta se debe reemplazar con la ruta relativa "devices" para que funcione en otras máquinas
-#  directory_path = '/Users/santiago.munoz/Documents/GitHub clone/Apolo-11/programa/apolo_11/simulator/devices'
+# directory_path = '/Users/santiago.munoz/Documents/GitHub clone/Apolo-11/programa/apolo_11/simulator/devices'
