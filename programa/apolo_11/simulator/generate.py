@@ -7,6 +7,7 @@ import random
 import os
 import json
 
+
 def generate_data(dir_path):
 
     mission_generator: Mission_Generator = Mission_Generator()
@@ -16,7 +17,7 @@ def generate_data(dir_path):
 
     unkn: str = "UNKN"
     hash: str = "unknown"
-    
+
     if mission == unkn:
         now_date: str = generate_date()
         device: str = "unknown"

@@ -37,7 +37,7 @@ def run_file(file_path):
         exec(open(file_path).read())
     except Exception as e:
         print(f"Error running file: {e}")
-        
+
 
 def main():
     # Specify the relative_path provided by the developer
