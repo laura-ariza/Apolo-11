@@ -12,7 +12,6 @@ def extract_all_keys(file_path):
             print(f"Error decoding JSON in {file_path}: {e}")
             return None
 
-import os
 
 def process_files(directory):
     subfolder_reports = {}
