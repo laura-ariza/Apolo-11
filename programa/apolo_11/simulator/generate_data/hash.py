@@ -1,4 +1,7 @@
 import hashlib
+import logging
+
+logging.basicConfig(filename='hash.log', level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
 
 
 def generate_hash(now_date, value_mission, device, device_status) ->str:
@@ -22,6 +25,7 @@ def generate_hash(now_date, value_mission, device, device_status) ->str:
         
         # Apply hash SHA-256 to concatenated data
         hash_result = hashlib.sha256(hash_data.encode()).hexdigest()
+        logging.info("Hash generated successfully.")
         return hash_result
     except Exception as e:
-        print(f"An error occurred: {e}")
+        logging.error(f"An error occurred: {e}")

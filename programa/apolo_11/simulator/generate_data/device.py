@@ -1,4 +1,7 @@
 import random 
+import logging
+
+logging.basicConfig(filename='device.log', level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
 
 
 def generate_device() -> str:
@@ -16,6 +19,7 @@ def generate_device() -> str:
         
         # Device randomization
         device_type: str = random.choice(option_device)
+        logging.info("Device generated successfully.")
         return device_type
     except Exception as e:
-        print(f"An error occurred: {e}")
+        logging.error(f"An error occurred: {e}")
