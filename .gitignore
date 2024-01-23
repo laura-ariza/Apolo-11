@@ -6,3 +6,6 @@ programa/apolo_11/simulator/reports/__pycache__/
 # Ignore devices path
 programa/apolo_11/simulator/devices/
 
+# Ignore .log files
+date.log
+
