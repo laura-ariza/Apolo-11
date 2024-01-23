@@ -58,27 +58,33 @@ def create_reports(subfolder_reports):
     for subfolder_name, data in subfolder_reports.items():
         summary_data = data["summary"]
         device_counts = data["device_counts"]
-
+        
         # Format according to date and time requirements
         current_datetime = datetime.now().strftime("%d-%m-%Y %H:%M:%S")
 
         # Include only the simulation level in the report file name
         subfolder_parts = subfolder_name.split(os.path.sep)
-        simulation_name_for_file = subfolder_parts[-2]  # Take only the simulation level
-        report_file_name = os.path.join("reports", f'APLSTATS-REPORTE-{simulation_name_for_file}-{current_datetime}.log')
+        simulation_name_for_folder = subfolder_parts[-2]  # Take only the simulation level
 
-        # Create the directory if it doesn't exist
-        os.makedirs(os.path.dirname(report_file_name), exist_ok=True)
+        # Create a subfolder for each simulation within the reports folder
+        simulation_folder = os.path.join("reports", simulation_name_for_folder)
+        os.makedirs(simulation_folder, exist_ok=True)
+
+        # Include both simulation and execution levels in the report file name
+        execution_name_for_file = subfolder_parts[-1]
+        report_file_name = os.path.join(simulation_folder, f'APLSTATS-REPORTE-{execution_name_for_file}-{current_datetime}.log')
 
         with open(report_file_name, 'w') as report:
+            """
+            This commented part of the script displays the summary of each analyzed file. Use it for testing
             report.write("Summary:\n")
             for idx, info in enumerate(summary_data, start=1):
                 report.write(f"  File {idx} Summary:\n")
                 for key, value in info.items():
                     report.write(f"    {key}: {value}\n")
                 report.write("\n")
-            
-            report.write("\nDevice Counts:\n")
+            """
+            report.write("\n********** REPORT: **********\n")
             for mission, devices in device_counts.items():
                 report.write(f"  Mission: {mission}\n")
                 for device, info in devices.items():
@@ -86,10 +92,8 @@ def create_reports(subfolder_reports):
                     report.write(f"    {device}: {count_value}\n")
                     if "statuses" in info:
                         for status, count in info["statuses"].items():
-                            report.write(f"      {device} Status: {status}: {count}\n")
+                            report.write(f"     {status}: {count}\n")
+                            # report.write(f"      {device} Status: {status}: {count}\n")
                 report.write("\n")
                 
         print(f"Report file '{report_file_name}' created successfully.")
-
-# Esta ruta se debe reemplazar con la ruta relativa "devices" para que funcione en otras máquinas
-# directory_path = '/Users/santiago.munoz/Documents/GitHub clone/Apolo-11/programa/apolo_11/simulator/devices'
