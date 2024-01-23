@@ -12,15 +12,17 @@ def extract_all_keys(file_path):
             print(f"Error decoding JSON in {file_path}: {e}")
             return None
 
+import os
 
 def process_files(directory):
     subfolder_reports = {}
-    
-    for root, _, files in os.walk(directory):
-        # Usar la ruta relativa como nombre del subfolder
+
+    for root, dirs, files in os.walk(directory):
+        # Use the relative path as the name of the subfolder
         subfolder_name = os.path.relpath(root, directory)
-        # Procesar los archivos solo si están en subfolders
-        if subfolder_name != '.':
+
+        # Process the files only if they are in subfolders (excluding the new level)
+        if subfolder_name != '.' and subfolder_name.count(os.path.sep) == 1:
             summary_data = []
             device_counts = {}
 
@@ -31,7 +33,7 @@ def process_files(directory):
                     if file_data is not None:
                         summary_data.append(file_data)
 
-                        # Contar los devices por misión y estado
+                        # Count devices by mission and status
                         mission = file_data.get("Mission", "Unknown")
                         device = file_data.get("Device", "Unknown")
                         device_status = file_data.get("Device Status", "Unknown")
@@ -47,7 +49,7 @@ def process_files(directory):
                         status_key = f"{device} Status: {device_status}"
                         device_counts[mission][device]["statuses"][status_key] = device_counts[mission][device]["statuses"].get(status_key, 0) + 1
 
-            # Alamacenar el resumen de datos, devices y conteos por subfolder
+            # Store the data summary, devices, and counts per subfolder
             subfolder_reports[subfolder_name] = {"summary": summary_data, "device_counts": device_counts}
 
     return subfolder_reports
@@ -58,11 +60,17 @@ def create_reports(subfolder_reports):
         summary_data = data["summary"]
         device_counts = data["device_counts"]
 
-        # Formato de acuerdo con los requerimientos de fecha y hora
+        # Format according to date and time requirements
         current_datetime = datetime.now().strftime("%d-%m-%Y %H:%M:%S")
 
-        # Necesitamos sacar la parte de de subfolder_name para corregir formato, sin embargo, al hacerlo solo se crea el reporte para el primer subfolder
-        report_file_name = f'APLSTATS-REPORTE-{subfolder_name}-{current_datetime}.log'
+        # Include the new subfolder level in the report file name
+        subfolder_parts = subfolder_name.split(os.path.sep)
+        subfolder_name_for_file = os.path.join(*subfolder_parts[-2:])  # Take the last two parts for the new subfolder level
+        report_file_name = os.path.join("reports", f'APLSTATS-REPORTE-{subfolder_name_for_file}-{current_datetime}.log')
+
+        # Create the directory if it doesn't exist
+        os.makedirs(os.path.dirname(report_file_name), exist_ok=True)
+
         with open(report_file_name, 'w') as report:
             report.write("Summary:\n")
             for idx, info in enumerate(summary_data, start=1):
