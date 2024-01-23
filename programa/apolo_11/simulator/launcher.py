@@ -44,7 +44,7 @@ def main():
     dir_path_devices= new_dir_devices()
     dir_path_simulation = new_dir_simulation(dir_path_devices)
     # Creation of options menu to generate simulation or reports
-    print(r"""\
+    print(r"""
         |
        / \
       / _ \
