@@ -1,7 +1,10 @@
 from datetime import datetime
+import logging
+
+logging.basicConfig(filename='date.log', level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
 
 
-def generate_date() -> str: # Change the name of the function
+def generate_date() -> str:
     """This function generates a current date and time in the
     format of "dd-mm-yyyy HH:MM:SS"
     Returns:
@@ -16,6 +19,7 @@ def generate_date() -> str: # Change the name of the function
 
         # Date format change
         date: str = now.strftime("%d-%m-%Y %H:%M:%S")
+        logging.info("Date generated successfully.")
         return date
     except Exception as e:
-        print(f"An error occurred: {e}")
+        logging.error(f"An error occurred: {e}")
