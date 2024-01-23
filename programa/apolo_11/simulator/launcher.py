@@ -44,6 +44,18 @@ def main():
     dir_path_devices= new_dir_devices()
     dir_path_simulation = new_dir_simulation(dir_path_devices)
     # Creation of options menu to generate simulation or reports
+    print(r"""\
+        |
+       / \
+      / _ \
+     |.o '.|
+     |'._.'|
+     |     |
+   ,'|  |  |`.
+  /  |  |  |  \
+  |,-'--|--'-.|
+    """)
+       
     print("¡Welcome to Apollo 11!","1. Start a new simulation","2. Generate reports", sep="\n")
     option = input("Type an option:")
     if option == "1":
