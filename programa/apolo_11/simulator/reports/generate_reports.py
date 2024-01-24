@@ -75,25 +75,33 @@ def create_reports(subfolder_reports):
         report_file_name = os.path.join(simulation_folder, f'APLSTATS-REPORTE-{execution_name_for_file}-{current_datetime}.log')
 
         with open(report_file_name, 'w') as report:
-            """
-            This commented part of the script displays the summary of each analyzed file. Use it for testing
-            report.write("Summary:\n")
-            for idx, info in enumerate(summary_data, start=1):
-                report.write(f"  File {idx} Summary:\n")
-                for key, value in info.items():
-                    report.write(f"    {key}: {value}\n")
-                report.write("\n")
-            """
-            report.write("\n********** REPORT: **********\n")
+            report.write("\n********** ANALISIS DE EVENTOS: **********\n")
+            
+            # Dictionary to store counts of faulty devices for each mission
+            faulty_devices_summary = {}
+
             for mission, devices in device_counts.items():
                 report.write(f"  Mission: {mission}\n")
+                faulty_status_count = 0  # Initialize count for "faulty" status devices
                 for device, info in devices.items():
                     count_value = info["count"]
                     report.write(f"    {device}: {count_value}\n")
                     if "statuses" in info:
                         for status, count in info["statuses"].items():
                             report.write(f"     {status}: {count}\n")
-                            # report.write(f"      {device} Status: {status}: {count}\n")
+                            if "faulty" in status.lower():
+                                faulty_status_count += count
+                                # Optionally, you can print the count for each device with "faulty" status
+                                # report.write(f"      {device} Status: {status}: {count}\n")
+
+                # Store the count of "faulty" status devices in the summary dictionary
+                faulty_devices_summary[mission] = faulty_status_count
+
                 report.write("\n")
-                
+
+            # Include the summary section for faulty devices at the end of the report
+            report.write("\n********** SUMMARY OF FAULTY DEVICES: **********\n")
+            for mission, count in faulty_devices_summary.items():
+                report.write(f"  {mission}: {count} occurrences\n")
         print(f"Report file '{report_file_name}' created successfully.")
+        
