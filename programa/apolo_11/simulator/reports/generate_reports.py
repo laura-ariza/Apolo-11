@@ -84,26 +84,32 @@ def create_reports(subfolder_reports):
 
             for mission, devices in device_counts.items():
                 report.write(f"  Mission: {mission}\n")
-                faulty_status_count = 0 # Initialize count for "faulty" status devices
+                total_devices_count = sum(info["count"] for info in devices.values())
+                faulty_status_count = 0  # Initialize count for "faulty" status devices
                 unknown_status_count = 0
                 for device, info in devices.items():
                     count_value = info["count"]
-                    report.write(f"    {device}: {count_value}\n")
+                    percentage = (count_value / total_devices_count) * 100 if total_devices_count > 0 else 0
+                    report.write(f"    {device}: {count_value} ({percentage:.2f}%)\n")
                     if "statuses" in info:
                         for status, count in info["statuses"].items():
-                            report.write(f"     {status}: {count}\n")
+                            percentage_status = (count / count_value) * 100 if count_value > 0 else 0
+                            report.write(f"     {status}: {count} ({percentage_status:.2f}%)\n")
                             if "faulty" in status.lower():
                                 faulty_status_count += count
-                                # Optionally, you can print the count for each device with "faulty" status
-                                # report.write(f"      {device} Status: {status}: {count}\n")
                             if "unknown" in status.lower():
                                 unknown_status_count += count
-                        
 
                 # Store the count of "faulty" status devices in the summary dictionary
-                faulty_devices_summary[mission] = faulty_status_count
+                faulty_devices_summary[mission] = {
+                    'count': faulty_status_count,
+                    'percentage': (faulty_status_count / total_devices_count) * 100 if total_devices_count > 0 else 0
+                }
                 
-                unknown_devices_summary[mission] = unknown_status_count
+                unknown_devices_summary[mission] = {
+                    'count': unknown_status_count,
+                    'percentage': (unknown_status_count / total_devices_count) * 100 if total_devices_count > 0 else 0
+                }
 
                 report.write("\n")
 
@@ -121,12 +127,14 @@ def create_reports(subfolder_reports):
 
             for device, statuses in device_status_summary.items():
                 report.write(f"  Device: {device}\n")
+                total_device_count = sum(statuses.values())
                 for status, count in statuses.items():
-                    report.write(f"    {status}: {count}\n")
+                    percentage_status = (count / total_device_count) * 100 if total_device_count > 0 else 0
+                    report.write(f"    {status}: {count} ({percentage_status:.2f}%)\n")
             
             # Include the summary section for faulty devices at the end of the report
             report.write("\n********** SUMMARY OF FAULTY DEVICES BY MISSION: **********\n")
-            for mission, count in faulty_devices_summary.items():
-                report.write(f"  {mission}: {count} occurrences\n")          
+            for mission, info in faulty_devices_summary.items():
+                report.write(f"  {mission}: {info['count']} occurrences ({info['percentage']:.2f}%)\n")     
                 
         print(f"Report file '{report_file_name}' created successfully.")
