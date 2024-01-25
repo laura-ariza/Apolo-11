@@ -54,20 +54,21 @@ def process_files(directory):
     return subfolder_reports
 
 
-def create_reports(subfolder_reports):
+def create_reports(subfolder_reports, dir_path_reports):
     for subfolder_name, data in subfolder_reports.items():
         summary_data = data["summary"]
         device_counts = data["device_counts"]
         
         # Format according to date and time requirements
-        current_datetime = datetime.now().strftime("%d-%m-%Y %H:%M:%S")
+        current_datetime = datetime.now().strftime("%d-%m-%Y %H_%M_%S")
 
         # Include only the simulation level in the report file name
         subfolder_parts = subfolder_name.split(os.path.sep)
         simulation_name_for_folder = subfolder_parts[-2]  # Take only the simulation level
+        print("***************", simulation_name_for_folder)
 
         # Create a subfolder for each simulation within the reports folder
-        simulation_folder = os.path.join("reports", simulation_name_for_folder)
+        simulation_folder = os.path.join(dir_path_reports, simulation_name_for_folder)
         os.makedirs(simulation_folder, exist_ok=True)
 
         # Include both simulation and execution levels in the report file name

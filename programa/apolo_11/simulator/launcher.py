@@ -8,29 +8,21 @@ from datetime import datetime
 count_executed: int = 1
 
 
-def new_dir_simulation(dir_path):
-    dir_name = "simulation_" + str(datetime.now()).replace(":", "_") # definir reglas de nombre de carpetas
-    dir_path = os.path.join(dir_path, dir_name)
-    if not os.path.isdir(dir_path):
-        os.mkdir(dir_path)
-    return dir_path
+# def new_dir_simulation(dir_path):
+#     dir_path = os.path.join(dir_path, dir_name)
+#     if not os.path.isdir(dir_path):
+#         os.mkdir(dir_path)
+#     return dir_path
 
 # Create a directory and return the directory path
-def new_dir_devices():
-    dir_devices = "devices"
-    absolute_path = os.path.dirname(__file__)
-    dir_path = ""
-    dir_path = os.path.join(absolute_path, dir_devices)
+def new_directory(name_directory:str, path_directory:str):
+    if path_directory == "":
+        path_directory = os.path.dirname(__file__)
+    dir_path = os.path.join(path_directory, name_directory)
     if not os.path.isdir(dir_path):
         os.mkdir(dir_path)
     return dir_path
 
-def dir_executed(dir_path):
-    global count_executed
-    new_dir_path = os.path.join(dir_path, f"execution_{count_executed}")
-    count_executed += 1
-    os.mkdir(new_dir_path)
-    return new_dir_path
 
 def run_file(file_path):
     try:
@@ -40,9 +32,13 @@ def run_file(file_path):
 
 
 def main():
+    global count_executed
     # Specify the relative_path provided by the developer
-    dir_path_devices= new_dir_devices()
-    dir_path_simulation = new_dir_simulation(dir_path_devices)
+    dir_path_files = new_directory("files", "")
+    dir_path_devices = new_directory("devices", dir_path_files)
+    dir_name_simulation: str = "simulation_" + str(datetime.now()).replace(":", "_") # definir reglas de nombre de carpetas
+    dir_path_simulation = new_directory(dir_name_simulation, dir_path_devices)
+    dir_path_reports = new_directory("reports", dir_path_files)
     # Creation of options menu to generate simulation or reports
     print(r"""
         |
@@ -61,13 +57,15 @@ def main():
     if option == "1":
         print("Simulation in progress...", "Press 'Ctrl+C' to stop the simulation.", sep="\n")
         while True:
-            dir_path = dir_executed(dir_path_simulation)
+            name_executed = f"execution_{count_executed}"
+            count_executed += 1
+            dir_path = new_directory(name_executed, dir_path_simulation)
             gd.files_create(dir_path)
             time.sleep(5)
     elif option == "2":
         print("Report generated  to path --> ", dir_path_devices)
         subfolder_reports = generate_reports.process_files(dir_path_devices)
-        generate_reports.create_reports(subfolder_reports)        
+        generate_reports.create_reports(subfolder_reports, dir_path_reports)        
 
 if __name__ == "__main__":
     main()
