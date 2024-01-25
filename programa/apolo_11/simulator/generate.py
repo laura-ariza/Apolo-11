@@ -43,11 +43,8 @@ def generate_data(dir_path):
         }
         json.dump(data, file, indent = 4)       
         
-def files_create(dir_path):
-    min: int = 1 
-    max: int = 20
+def files_create(dir_path, min, max):
     number_files: int = random.randint(min, max)
-
     for i in range(number_files):
         generate_data(dir_path)
     return
