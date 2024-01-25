@@ -1,6 +1,7 @@
 import os
 import json
 from datetime import datetime
+import shutil
 
 
 def extract_all_keys(file_path):
@@ -15,13 +16,14 @@ def extract_all_keys(file_path):
 
 def process_files(directory):
     subfolder_reports = {}
-
+    count_reports = 0
     for root, dirs, files in os.walk(directory):
         # Use the relative path as the name of the subfolder
         subfolder_name = os.path.relpath(root, directory)
 
         # Process the files only if they are in subfolders (excluding the new level)
         if subfolder_name != '.' and subfolder_name.count(os.path.sep) == 1:
+            count_reports += 1
             summary_data = []
             device_counts = {}
 
@@ -50,30 +52,34 @@ def process_files(directory):
 
             # Store the data summary, devices, and counts per subfolder
             subfolder_reports[subfolder_name] = {"summary": summary_data, "device_counts": device_counts}
+    if count_reports == 0:
+        print("No reports")
 
     return subfolder_reports
 
 
-def create_reports(subfolder_reports):
+def create_reports(subfolder_reports, dir_path_reports, path_origin_directory:str, path_destination_directory:str):
+    value_folder = ""
     for subfolder_name, data in subfolder_reports.items():
+        print(subfolder_name + "este es el subfolder")
         summary_data = data["summary"]
         device_counts = data["device_counts"]
         
         # Format according to date and time requirements
-        current_datetime = datetime.now().strftime("%d-%m-%Y %H:%M:%S")
+        current_datetime = datetime.now().strftime("%d-%m-%Y %H_%M_%S")
 
         # Include only the simulation level in the report file name
         subfolder_parts = subfolder_name.split(os.path.sep)
         simulation_name_for_folder = subfolder_parts[-2]  # Take only the simulation level
 
         # Create a subfolder for each simulation within the reports folder
-        simulation_folder = os.path.join("reports", simulation_name_for_folder)
+        simulation_folder = os.path.join(dir_path_reports, simulation_name_for_folder)
         os.makedirs(simulation_folder, exist_ok=True)
 
         # Include both simulation and execution levels in the report file name
         execution_name_for_file = subfolder_parts[-1]
         report_file_name = os.path.join(simulation_folder, f'APLSTATS-REPORTE-{execution_name_for_file}-{current_datetime}.log')
-
+        print("****", simulation_folder)
         with open(report_file_name, 'w') as report:
             report.write("\n********** EVENT ANALYSIS: **********\n")
             
@@ -138,3 +144,13 @@ def create_reports(subfolder_reports):
                 report.write(f"  {mission}: {info['count']} occurrences ({info['percentage']:.2f}%)\n")     
                 
         print(f"Report file '{report_file_name}' created successfully.")
+        # Validación de movimiento de carpeta de simulación
+        if value_folder == "":
+            value_folder = simulation_name_for_folder
+        if value_folder != simulation_name_for_folder:
+            dir_path_simulator = os.path.join(path_origin_directory, value_folder)
+            shutil.move(dir_path_simulator, path_destination_directory)
+            value_folder = simulation_name_for_folder
+    if value_folder != "":
+        dir_path_simulator = os.path.join(path_origin_directory, value_folder)
+        shutil.move(dir_path_simulator, path_destination_directory)
