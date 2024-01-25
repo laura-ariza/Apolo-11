@@ -7,6 +7,7 @@ import random
 import os
 import json
 
+
 def generate_data(dir_path):
 
     mission_generator: Mission_Generator = Mission_Generator()
@@ -16,7 +17,7 @@ def generate_data(dir_path):
 
     unkn: str = "UNKN"
     hash: str = "unknown"
-    
+
     if mission == unkn:
         now_date: str = generate_date()
         device: str = "unknown"
@@ -42,11 +43,8 @@ def generate_data(dir_path):
         }
         json.dump(data, file, indent = 4)       
         
-def files_create(dir_path):
-    min: int = 1 
-    max: int = 20
+def files_create(dir_path, min, max):
     number_files: int = random.randint(min, max)
-
     for i in range(number_files):
         generate_data(dir_path)
     return
