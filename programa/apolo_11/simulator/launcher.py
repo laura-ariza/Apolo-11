@@ -48,13 +48,13 @@ def create_content():
     path_apolo['dir_path_reports'] = dir_path_reports
     path_apolo['dir_path_backups'] = dir_path_backups
 
-# Inicializa una hebra en paralelo a la simulacion
+# Initialize a thread in parallel to the simulation
 def threading_simulation(dir_path_simulation):
     global count_executed, path_apolo, dict_values_simulation
     while state:
         name_executed = f"execution_{count_executed}"
         count_executed += 1
-        print(count_executed, name_executed)
+        print(name_executed)
         dir_path = new_directory(name_executed, dir_path_simulation)
         # Genera los archivos
         min = dict_values_simulation['simulation_config']['count_file_min']
@@ -72,7 +72,7 @@ def run_simulation():
         path_apolo['dir_path_devices'])
     print("Simulation in progress...")
     thread_simulation = threading.Thread(target = threading_simulation, args=(dir_path_simulation,))
-    print('','Press enter to continue', sep="\n")
+    print('','Press Enter to stop the simulation and continue', sep="\n")
     thread_simulation.start()
     
     input()
