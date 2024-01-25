@@ -1,0 +1,8 @@
+---
+simulation_config:
+  time_seconds: !!int 3 # Tiempos de ejecución
+  count_file_min: !!int 1 # Cantidad mínima de archivos
+  count_file_max: !!int 10 # Cantidad máxima de archivos
+
+
+
