@@ -8,13 +8,14 @@ class Tools(object):
     dict_directories = {}
     count_executed: int = 1
     state = True
+
     def __init__(self):
         pass
-    
+
     @staticmethod
     def path_absolut():
-        return  path.dirname(__file__)
-    
+        return path.dirname(__file__)
+
     @staticmethod
     def read_yaml() -> dict:
         content: dict = None
@@ -28,7 +29,7 @@ class Tools(object):
             print(ex)
             content = None
         return content
-    
+
     @staticmethod
     def json_reports(full_dic_report):
         temporal_dict = {}
@@ -41,9 +42,6 @@ class Tools(object):
                 temporal_dict.update(full_dic_report)
         except:
             temporal_dict = {}
-        temporal_dict.update(full_dic_report)    
+        temporal_dict.update(full_dic_report)
         with open(file_path, 'w') as write_file:
             json.dump(temporal_dict, write_file, indent=4)
-    
-
-        

@@ -17,12 +17,12 @@ def create_directory():
     dir_devices = Directory('devices', dir_files.get_name_path)
     dir_reports = Directory('reports', dir_files.get_name_path)
     dir_backups = Directory('backups', dir_files.get_name_path)
-    
+
     # agregacion de directorios a diccionario de herramientas
-    Tools.dict_directories['dir_files']= dir_files
-    Tools.dict_directories['dir_devices']= dir_devices
-    Tools.dict_directories['dir_reports']= dir_reports
-    Tools.dict_directories['dir_backups']= dir_backups
+    Tools.dict_directories['dir_files'] = dir_files
+    Tools.dict_directories['dir_devices'] = dir_devices
+    Tools.dict_directories['dir_reports'] = dir_reports
+    Tools.dict_directories['dir_backups'] = dir_backups
 
 
 # Initialize a thread in parallel to the simulation
@@ -41,15 +41,14 @@ def threading_simulation(dir_simulation):
 
 def run_simulation():
     Tools.state = True
-    dir_name_simulation: str= "simulation_" + str(datetime.now()).replace(":", "_")
-    dir_simulation = Directory(dir_name_simulation, 
-                               Tools.dict_directories['dir_devices'].get_name_path)
+    dir_name_simulation: str = "simulation_" + str(datetime.now()).replace(":", "_")
+    dir_simulation = Directory(dir_name_simulation, Tools.dict_directories['dir_devices'].get_name_path)
 
     print("Simulation in progress...")
-    thread_simulation = threading.Thread(target = threading_simulation, args=(dir_simulation,))
-    print('','Press Enter to stop the simulation and continue', sep="\n")
+    thread_simulation = threading.Thread(target=threading_simulation, args=(dir_simulation,))
+    print('', 'Press Enter to stop the simulation and continue', sep="\n")
     thread_simulation.start()
-    
+
     input()
     Tools.state = False
     print("ending simulation...")
@@ -61,9 +60,9 @@ def run_reports():
         Tools.dict_directories['dir_devices'].get_name_path)
     Tools.json_reports(subfolder_reports)
     generate_reports.create_reports(
-        subfolder_reports, 
+        subfolder_reports,
         Tools.dict_directories['dir_reports'].get_name_path,
-        Tools.dict_directories['dir_devices'].get_name_path, 
+        Tools.dict_directories['dir_devices'].get_name_path,
         Tools.dict_directories['dir_backups'].get_name_path)
 
 
@@ -85,7 +84,7 @@ def menu():
   |,-'--|--'-.|
     """)
 
-    print("¡Welcome to Apollo 11!","1. Start a new simulation","2. Generate reports","3. Dashborad", "4. Salir", sep="\n")
+    print("¡Welcome to Apollo 11!", "1. Start a new simulation", "2. Generate reports", "3. Dashborad", "4. Salir", sep="\n")
     option = input("Type an option:")
     if option == "1":
         run_simulation()
@@ -103,7 +102,7 @@ def main():
     # cargue de archivo de configuracion enlazado con diccionario de herramientas dict_content
     Tools.read_yaml()
     menu()
-    
+
 
 if __name__ == "__main__":
     main()
