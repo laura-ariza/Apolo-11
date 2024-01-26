@@ -1,3 +1,4 @@
+from tools import Tools
 import random 
 import logging
 
@@ -15,7 +16,7 @@ def generate_device_status() -> str:
     """
     try:
         # List of device status
-        option_status: list[str] = ["excellent", "good", "warning", "faulty", "killed", "unknown"]
+        option_status: list[str] = Tools.dict_content['option_status']
         
         # Device status randomization 
         device_status: str = random.choice(option_status)

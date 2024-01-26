@@ -1,93 +1,74 @@
-import yaml
-import time
+# local library
 import generate as gd
 import reports.generate_reports as generate_reports
-import os
+from generate_files.directory import Directory
+from tools import Tools
+
+# python library
+import time
 from datetime import datetime
 import threading
 
 
-count_executed: int = 1
-state = True
-path_apolo:dict = {}
-dict_values_simulation:dict = {}
+# Creación de directorios
+def create_directory():
+    # Creacion de directorios principales
+    dir_files = Directory('files', None)
+    dir_devices = Directory('devices', dir_files.get_name_path)
+    dir_reports = Directory('reports', dir_files.get_name_path)
+    dir_backups = Directory('backups', dir_files.get_name_path)
+    
+    # agregacion de directorios a diccionario de herramientas
+    Tools.dict_directories['dir_files']= dir_files
+    Tools.dict_directories['dir_devices']= dir_devices
+    Tools.dict_directories['dir_reports']= dir_reports
+    Tools.dict_directories['dir_backups']= dir_backups
 
-
-# Access the configuration file
-def read_yaml(path:str) -> dict:
-    content: dict = None
-    dir_path = os.path.join(path, 'config')
-    file_path = os.path.join(dir_path, 'config.yaml')
-    try:
-        with open(file_path) as file_config:
-            content = yaml.load(file_config, Loader=yaml.SafeLoader)
-    except Exception as ex:
-        print(ex)
-        content = None
-    return content
-
-
-# Create a directory and return the directory path
-def new_directory(name_directory:str, path_directory:str):
-    if path_directory == "":
-        path_directory = os.path.dirname(__file__)
-    dir_path = os.path.join(path_directory, name_directory)
-    if not os.path.isdir(dir_path):
-        os.mkdir(dir_path)
-    return dir_path
-
-
-def create_content():
-    # Specify the relative_path provided by the developer
-    dir_path_files: str = new_directory("files", "")
-    dir_path_devices: str = new_directory("devices", dir_path_files)
-    dir_path_reports: str = new_directory("reports", dir_path_files)
-    dir_path_backups: str = new_directory("backups", dir_path_files)
-    path_apolo['dir_path_files'] = dir_path_files
-    path_apolo['dir_path_devices'] = dir_path_devices
-    path_apolo['dir_path_reports'] = dir_path_reports
-    path_apolo['dir_path_backups'] = dir_path_backups
 
 # Initialize a thread in parallel to the simulation
-def threading_simulation(dir_path_simulation):
-    global count_executed, path_apolo, dict_values_simulation
-    while state:
-        name_executed = f"execution_{count_executed}"
-        count_executed += 1
+def threading_simulation(dir_simulation):
+    Tools.count_executed = 1
+    while Tools.state:
+        name_executed = f"execution_{Tools.count_executed}"
+        Tools.count_executed += 1
         print(name_executed)
-        dir_path = new_directory(name_executed, dir_path_simulation)
+        dir_execute = Directory(name_executed, dir_simulation.get_name_path)
         # Genera los archivos
-        min = dict_values_simulation['simulation_config']['count_file_min']
-        max = dict_values_simulation['simulation_config']['count_file_max']
-        time_seconds = dict_values_simulation['simulation_config']['time_seconds']
-        gd.files_create(dir_path, min, max)
+        time_seconds = Tools.dict_content['simulation_config']['time_seconds']
+        gd.files_create(dir_execute.get_name_path)
         time.sleep(time_seconds)
 
+
 def run_simulation():
-    global path_apolo, state
-    state = True
-    dir_name_simulation: str = "simulation_" + str(datetime.now()).replace(":", "_")
-    dir_path_simulation = new_directory(
-        dir_name_simulation, 
-        path_apolo['dir_path_devices'])
+    Tools.state = True
+    dir_name_simulation: str= "simulation_" + str(datetime.now()).replace(":", "_")
+    dir_simulation = Directory(dir_name_simulation, 
+                               Tools.dict_directories['dir_devices'].get_name_path)
+
     print("Simulation in progress...")
-    thread_simulation = threading.Thread(target = threading_simulation, args=(dir_path_simulation,))
+    thread_simulation = threading.Thread(target = threading_simulation, args=(dir_simulation,))
     print('','Press Enter to stop the simulation and continue', sep="\n")
     thread_simulation.start()
     
     input()
-    state = False
+    Tools.state = False
     print("ending simulation...")
 
+
 def run_reports():
-    global path_apolo
-    print("Report generated  to path --> ", path_apolo['dir_path_devices'])
-    subfolder_reports = generate_reports.process_files(path_apolo['dir_path_devices'])
+    print("Report generated  to path --> ", Tools.dict_directories['dir_devices'].get_name_path)
+    subfolder_reports = generate_reports.process_files(
+        Tools.dict_directories['dir_devices'].get_name_path)
+    Tools.json_reports(subfolder_reports)
     generate_reports.create_reports(
         subfolder_reports, 
-        path_apolo['dir_path_reports'],
-        path_apolo['dir_path_devices'], 
-        path_apolo['dir_path_backups'])
+        Tools.dict_directories['dir_reports'].get_name_path,
+        Tools.dict_directories['dir_devices'].get_name_path, 
+        Tools.dict_directories['dir_backups'].get_name_path)
+
+
+def run_dashboard():
+    return
 
 
 def menu():
@@ -104,22 +85,25 @@ def menu():
   |,-'--|--'-.|
     """)
 
-    print("¡Welcome to Apollo 11!","1. Start a new simulation","2. Generate reports", "3. Salir", sep="\n")
+    print("¡Welcome to Apollo 11!","1. Start a new simulation","2. Generate reports","3. Dashborad", "4. Salir", sep="\n")
     option = input("Type an option:")
     if option == "1":
         run_simulation()
     elif option == "2":
         run_reports()
     elif option == "3":
+        run_dashboard()
+    elif option == "4":
         return
     menu()
 
+
 def main():
-    global dict_values_simulation
-    path_absolut = os.path.dirname(__file__)
-    dict_values_simulation = read_yaml(path_absolut)
-    create_content()
+    create_directory()
+    # cargue de archivo de configuracion enlazado con diccionario de herramientas dict_content
+    Tools.read_yaml()
     menu()
+    
 
 if __name__ == "__main__":
     main()

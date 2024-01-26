@@ -4,5 +4,28 @@ simulation_config:
   count_file_min: !!int 1 # Cantidad mínima de archivos
   count_file_max: !!int 10 # Cantidad máxima de archivos
 
+control_errors:
+  no_found_reports: !!str 'No files found to generate report'
+
+mission_options:
+  OrbitOne: !!str "ORBONE"
+  ColonyMoon: !!str "CLNM"
+  VacMars: !!str "TMRS"
+  GalaxyTwo: !!str "GALXONE"
+  Unknown: !!str "UNKN"
+
+option_status: 
+  - "excellent"
+  - "good"
+  - "warning"
+  - "faulty"
+  - "killed"
+  - "unknown"
+
+option_device:
+  - "satellites"
+  - "airplanes"
+  - "suits"
+  - "vehicles"
 
 

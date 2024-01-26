@@ -1,3 +1,5 @@
+from tools import Tools
+
 import os
 import json
 from datetime import datetime
@@ -50,10 +52,11 @@ def process_files(directory):
                         status_key = f"{device} Status: {device_status}"
                         device_counts[mission][device]["statuses"][status_key] = device_counts[mission][device]["statuses"].get(status_key, 0) + 1
 
+
             # Store the data summary, devices, and counts per subfolder
             subfolder_reports[subfolder_name] = {"summary": summary_data, "device_counts": device_counts}
     if count_reports == 0:
-        print("No reports")
+        print(Tools.dict_content['control_errors']['no_found_reports'])
 
     return subfolder_reports
 

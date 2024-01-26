@@ -1,3 +1,4 @@
+from tools import Tools
 from generate_data.date import generate_date
 from generate_data.device_status import generate_device_status 
 from generate_data.device import generate_device
@@ -43,7 +44,9 @@ def generate_data(dir_path):
         }
         json.dump(data, file, indent = 4)       
         
-def files_create(dir_path, min, max):
+def files_create(dir_path):
+    min = Tools.dict_content['simulation_config']['count_file_min']
+    max = Tools.dict_content['simulation_config']['count_file_max']
     number_files: int = random.randint(min, max)
     for i in range(number_files):
         generate_data(dir_path)
