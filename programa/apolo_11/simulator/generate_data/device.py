@@ -1,3 +1,4 @@
+from tools import Tools
 import random 
 import logging
 
@@ -15,7 +16,7 @@ def generate_device() -> str:
     """
     try:
         # List of device options 
-        option_device: list[str] = ["satellites", "airplanes", "suits", "vehicles"]
+        option_device: list[str] = Tools.dict_content['option_device']
         
         # Device randomization
         device_type: str = random.choice(option_device)

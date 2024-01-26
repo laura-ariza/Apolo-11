@@ -1,3 +1,5 @@
+from tools import Tools
+
 import random
 import logging
 
@@ -18,13 +20,7 @@ class Mission_Generator:
         """
         Initializes Mission_Generator with predefined mission options.
         """
-        self._mission_options: dict[str, str] = {
-            "OrbitOne": "ORBONE",
-            "ColonyMoon": "CLNM",
-            "VacMars": "TMRS",
-            "GalaxyTwo": "GALXONE",
-            "Unknown": "UNKN"
-        }
+        self._mission_options: dict[str, str] = Tools.dict_content['mission_options']
 
     def generate_mission(self) -> tuple[str, str]:
         """
