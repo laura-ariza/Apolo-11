@@ -34,7 +34,7 @@ class Tools(object):
     def json_reports(full_dic_report):
         temporal_dict = {}
         # json_string = json.dumps(full_dic_report)
-        file_path = path.join(Tools.dict_directories['dir_files'].get_name_path, 'dashboard.json')
+        file_path = path.join(Tools.dict_directories['dir_files'].name_path, 'dashboard.json')
         # dir_path = os.path.join(os.path.dirname(__file__), 'dashboard.json')
         try:
             with open(file_path) as file:
