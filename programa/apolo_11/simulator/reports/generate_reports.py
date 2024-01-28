@@ -64,7 +64,6 @@ def process_files(directory):
 def create_reports(subfolder_reports, dir_path_reports, path_origin_directory:str, path_destination_directory:str):
     value_folder = ""
     for subfolder_name, data in subfolder_reports.items():
-        print(subfolder_name + "este es el subfolder")
         summary_data = data["summary"]
         device_counts = data["device_counts"]
         

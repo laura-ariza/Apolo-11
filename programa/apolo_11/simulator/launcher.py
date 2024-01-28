@@ -2,12 +2,14 @@
 from generate import DataGenerator
 import reports.generate_reports as generate_reports
 from generate_files.directory import Directory
+# from dashboard.generate_dashboard import Dashboard
 from tools import Tools
 
 # python library
 import time
 from datetime import datetime
 import threading
+from os import path
 
 
 # Creación de directorios
@@ -58,7 +60,8 @@ def run_reports():
     print("Report generated  to path --> ", Tools.dict_directories['dir_devices'].name_path)
     subfolder_reports = generate_reports.process_files(
         Tools.dict_directories['dir_devices'].name_path)
-    Tools.json_reports(subfolder_reports)
+    file_path = path.join(Tools.dict_directories['dir_files'].name_path, 'dashboard.json')
+    Tools.write_json_reports(subfolder_reports, file_path)
     generate_reports.create_reports(
         subfolder_reports,
         Tools.dict_directories['dir_reports'].name_path,
@@ -67,6 +70,7 @@ def run_reports():
 
 
 def run_dashboard():
+    # Dashboard.generate_dashboard()
     return
 
 
@@ -100,7 +104,10 @@ def menu():
 def main():
     create_directory()
     # cargue de archivo de configuracion enlazado con diccionario de herramientas dict_content
-    Tools.read_yaml()
+    dir_path = path.join(Tools.path_absolut(), 'config','config.yaml')
+    print(dir_path)
+    # file_path = path.join(dir_path, 'config.yaml')
+    Tools.dict_content = Tools.read_yaml(dir_path)
     menu()
 
 
