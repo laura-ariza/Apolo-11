@@ -31,8 +31,8 @@ class DataGenerator():
             device_status: str = generate_device_status()
             hash = generate_hash(now_date, value_mission, device, device_status)
 
-        prefix = {Tools.dict_content['details_name_files']['prefix']}
-        separator = {Tools.dict_content['details_name_files']['separator']}
+        prefix = Tools.dict_content['details_name_files']['prefix']
+        separator = Tools.dict_content['details_name_files']['separator']
         sequence_min = Tools.dict_content['details_name_files']['sequence_min']
         sequence_max =  Tools.dict_content['details_name_files']['sequence_max']
         extension = Tools.dict_content['details_name_files']['extension']

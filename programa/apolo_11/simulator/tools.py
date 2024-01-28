@@ -9,9 +9,6 @@ class Tools(object):
     count_executed: int = 1
     state = True
 
-    def __init__(self):
-        pass
-
     @staticmethod
     def path_absolut():
         return path.dirname(__file__)
@@ -40,7 +37,8 @@ class Tools(object):
             with open(file_path) as file:
                 temporal_dict = json.load(file)
                 temporal_dict.update(full_dic_report)
-        except:
+        except Exception as ex:
+            print(ex)
             temporal_dict = {}
         temporal_dict.update(full_dic_report)
         with open(file_path, 'w') as write_file:

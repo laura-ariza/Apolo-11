@@ -9,5 +9,7 @@ programa/apolo_11/simulator/files/
 
 # Ignore .log files
 date.log
+programa/apolo_11/date.log
 programa/apolo_11/simulator/date.log
+programa/apolo_11/simulator/reports/date.log
 
