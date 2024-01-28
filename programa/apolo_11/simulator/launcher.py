@@ -1,5 +1,5 @@
 # local library
-import generate as gd
+from generate import DataGenerator
 import reports.generate_reports as generate_reports
 from generate_files.directory import Directory
 from tools import Tools
@@ -35,7 +35,7 @@ def threading_simulation(dir_simulation):
         dir_execute = Directory(name_executed, dir_simulation.name_path)
         # Genera los archivos
         time_seconds = Tools.dict_content['simulation_config']['time_seconds']
-        gd.files_create(dir_execute.name_path)
+        DataGenerator.files_creates(dir_execute.name_path)
         time.sleep(time_seconds)
 
 
