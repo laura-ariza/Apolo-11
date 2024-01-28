@@ -13,11 +13,11 @@ class Directory:
             self.create_directory()
                 
     @property
-    def get_name_path(self):
+    def name_path(self):
         return self.__name_path__
     
     @property
-    def get_state(self):
+    def state(self):
         return self.__state__
     
     # Create a directory and return the directory path

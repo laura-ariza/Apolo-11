@@ -1,5 +1,5 @@
 # local library
-import generate as gd
+from generate import DataGenerator
 import reports.generate_reports as generate_reports
 from generate_files.directory import Directory
 from tools import Tools
@@ -14,9 +14,9 @@ import threading
 def create_directory():
     # Creacion de directorios principales
     dir_files = Directory('files', None)
-    dir_devices = Directory('devices', dir_files.get_name_path)
-    dir_reports = Directory('reports', dir_files.get_name_path)
-    dir_backups = Directory('backups', dir_files.get_name_path)
+    dir_devices = Directory('devices', dir_files.name_path)
+    dir_reports = Directory('reports', dir_files.name_path)
+    dir_backups = Directory('backups', dir_files.name_path)
 
     # agregacion de directorios a diccionario de herramientas
     Tools.dict_directories['dir_files'] = dir_files
@@ -32,17 +32,17 @@ def threading_simulation(dir_simulation):
         name_executed = f"execution_{Tools.count_executed}"
         Tools.count_executed += 1
         print(name_executed)
-        dir_execute = Directory(name_executed, dir_simulation.get_name_path)
+        dir_execute = Directory(name_executed, dir_simulation.name_path)
         # Genera los archivos
         time_seconds = Tools.dict_content['simulation_config']['time_seconds']
-        gd.files_create(dir_execute.get_name_path)
+        DataGenerator.files_creates(dir_execute.name_path)
         time.sleep(time_seconds)
 
 
 def run_simulation():
     Tools.state = True
     dir_name_simulation: str = "simulation_" + str(datetime.now()).replace(":", "_")
-    dir_simulation = Directory(dir_name_simulation, Tools.dict_directories['dir_devices'].get_name_path)
+    dir_simulation = Directory(dir_name_simulation, Tools.dict_directories['dir_devices'].name_path)
 
     print("Simulation in progress...")
     thread_simulation = threading.Thread(target=threading_simulation, args=(dir_simulation,))
@@ -55,15 +55,15 @@ def run_simulation():
 
 
 def run_reports():
-    print("Report generated  to path --> ", Tools.dict_directories['dir_devices'].get_name_path)
+    print("Report generated  to path --> ", Tools.dict_directories['dir_devices'].name_path)
     subfolder_reports = generate_reports.process_files(
-        Tools.dict_directories['dir_devices'].get_name_path)
+        Tools.dict_directories['dir_devices'].name_path)
     Tools.json_reports(subfolder_reports)
     generate_reports.create_reports(
         subfolder_reports,
-        Tools.dict_directories['dir_reports'].get_name_path,
-        Tools.dict_directories['dir_devices'].get_name_path,
-        Tools.dict_directories['dir_backups'].get_name_path)
+        Tools.dict_directories['dir_reports'].name_path,
+        Tools.dict_directories['dir_devices'].name_path,
+        Tools.dict_directories['dir_backups'].name_path)
 
 
 def run_dashboard():

@@ -4,6 +4,13 @@ simulation_config:
   count_file_min: !!int 1 # Cantidad mínima de archivos
   count_file_max: !!int 10 # Cantidad máxima de archivos
 
+details_name_files:
+  prefix: !!str 'APL'
+  separator: !!str '-0000'
+  sequence_min: !!int 1
+  sequence_max: !!int 1000
+  extension: !!str '.log'
+
 control_errors:
   no_found_reports: !!str 'No files found to generate report'
 
