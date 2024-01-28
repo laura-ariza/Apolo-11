@@ -1,34 +1,42 @@
 from os import path
 import yaml
 import json
+from typing import Dict
 
 
 class Tools(object):
+    """
+    Static class that groups tools commonly used in the project, such as configuration data and routes.
+    """
     dict_content = {}
     dict_directories = {}
     count_executed: int = 1
     state = True
 
     @staticmethod
-    def path_absolut():
+    def path_absolut() -> str:
         return path.dirname(__file__)
 
     @staticmethod
-    def read_yaml() -> dict:
-        content: dict = None
+    def read_yaml() -> None:
+        """
+        Reads the configuration file and loads it into the general purpose dictionary (dict_content)
+        """
         dir_path = path.join(Tools.path_absolut(), 'config')
         file_path = path.join(dir_path, 'config.yaml')
         try:
             with open(file_path) as file_config:
-                content = yaml.load(file_config, Loader=yaml.SafeLoader)
-                Tools.dict_content = content
+                Tools.dict_content = yaml.load(file_config, Loader=yaml.SafeLoader)
         except Exception as ex:
             print(ex)
-            content = None
-        return content
 
     @staticmethod
-    def json_reports(full_dic_report):
+    def json_reports(full_dic_report: Dict[str, str]) -> None:
+        """Adds or updates the dictionary information received by parameter in the "files" path and converts it to a file in .json format
+
+        Args:
+            full_dic_report (dict): Contains the information of the generated reports
+        """
         temporal_dict = {}
         # json_string = json.dumps(full_dic_report)
         file_path = path.join(Tools.dict_directories['dir_files'].name_path, 'dashboard.json')
