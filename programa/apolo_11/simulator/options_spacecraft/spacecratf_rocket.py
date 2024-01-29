@@ -1,5 +1,6 @@
 from options_spacecraft.spacecraft import Draw
 
+
 class SpacecraftRocket(Draw):
     """Class that inherits from the Draw object
 
@@ -15,7 +16,6 @@ class SpacecraftRocket(Draw):
         """
         # Goes to the parent class and gets the attributes, way to access the constructor of the parent class
         super().__init__(name, slogan)
-
 
     def draw_spacecraft(self) -> None:
         """Print the spacecraft graph and its data via console
@@ -51,6 +51,6 @@ class SpacecraftRocket(Draw):
                .
                .
                .""")
-        
+
         print(self.name)
         print(self.slogan)

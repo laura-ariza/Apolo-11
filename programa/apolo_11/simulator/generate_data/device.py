@@ -1,5 +1,5 @@
 from tools import Tools
-import random 
+import random
 import logging
 
 logging.basicConfig(filename='device.log', level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
@@ -10,14 +10,14 @@ def generate_device() -> str:
 
     Returns:
         str: Randomly selected device type from options.
-    
+
     Raises:
         Exception: If an error occurs during device generation.
     """
     try:
-        # List of device options 
+        # List of device options
         option_device: list[str] = Tools.dict_content['option_device']
-        
+
         # Device randomization
         device_type: str = random.choice(option_device)
         logging.info("Device generated successfully.")

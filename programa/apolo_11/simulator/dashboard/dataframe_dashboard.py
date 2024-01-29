@@ -1,6 +1,7 @@
 import pandas as pd
 import json
 
+
 class DataFrame():
     @classmethod
     def json(cls, json_file: str) -> pd.DataFrame:
@@ -16,7 +17,6 @@ class DataFrame():
         # Read JSON file
         with open(json_file, 'r') as file:
             data = json.load(file)
-
         # Initializes an empty DataFrame
         df = pd.DataFrame()
 

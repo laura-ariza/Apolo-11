@@ -1,8 +1,13 @@
+import logging
 from tools import Tools
 import os
 import json
 from datetime import datetime
 import shutil
+
+# Logging settings
+logging.basicConfig(level=logging.INFO)
+# logger = logging.getLogger(__name__)
 
 
 def extract_all_keys(file_path):
@@ -21,7 +26,7 @@ def extract_all_keys(file_path):
             data = json.load(file)
             return data
         except json.JSONDecodeError as e:
-            print(f"Error decoding JSON in {file_path}: {e}")
+            logging.error(f"Error decoding JSON in {file_path}: {e}")
             return None
 
 
@@ -68,18 +73,18 @@ def process_files(directory):
                         device_counts[mission][device]["count"] += 1
 
                         status_key = f"{device} Status: {device_status}"
-                        device_counts[mission][device]["statuses"][status_key] = device_counts[mission][device]["statuses"].get(status_key, 0) + 1
-
+                        dev_count = device_counts[mission][device]["statuses"].get(status_key, 0) + 1
+                        device_counts[mission][device]["statuses"][status_key] = dev_count
 
             # Store the data summary, devices, and counts per subfolder
             subfolder_reports[subfolder_name] = {"summary": summary_data, "device_counts": device_counts}
     if count_reports == 0:
-        print(Tools.dict_content['control_errors']['no_found_reports'])
+        logging.warning(Tools.dict_content['control_errors']['no_found_reports'])
 
     return subfolder_reports
 
 
-def create_reports(subfolder_reports, dir_path_reports, path_origin_directory:str, path_destination_directory:str):
+def create_reports(subfolder_reports, dir_path_reports, path_origin_directory: str, path_destination_directory: str):
     """
     Creates reports from the processed data.
 
@@ -94,9 +99,9 @@ def create_reports(subfolder_reports, dir_path_reports, path_origin_directory:st
     """
     value_folder = ""
     for subfolder_name, data in subfolder_reports.items():
-        summary_data = data["summary"]
+        # summary_data = data["summary"]
         device_counts = data["device_counts"]
-        
+
         # Format according to date and time requirements
         current_datetime = datetime.now().strftime("%d-%m-%Y %H_%M_%S")
 
@@ -110,14 +115,16 @@ def create_reports(subfolder_reports, dir_path_reports, path_origin_directory:st
 
         # Include both simulation and execution levels in the report file name
         execution_name_for_file = subfolder_parts[-1]
-        report_file_name = os.path.join(simulation_folder, f'APLSTATS-REPORTE-{execution_name_for_file}-{current_datetime}.log')
-        print("****", simulation_folder)
+        report_file_name = os.path.join(
+            simulation_folder,
+            f'APLSTATS-REPORTE-{execution_name_for_file}-{current_datetime}.log')
+        logging.info(f"Creating report file '{report_file_name}'...")
         with open(report_file_name, 'w') as report:
             report.write("\n********** EVENT ANALYSIS: **********\n")
-            
+
             # Dictionary to store counts of faulty devices for each mission
             faulty_devices_summary = {}
-            
+
             unknown_devices_summary = {}
 
             for mission, devices in device_counts.items():
@@ -143,7 +150,7 @@ def create_reports(subfolder_reports, dir_path_reports, path_origin_directory:st
                     'count': faulty_status_count,
                     'percentage': (faulty_status_count / total_devices_count) * 100 if total_devices_count > 0 else 0
                 }
-                
+
                 unknown_devices_summary[mission] = {
                     'count': unknown_status_count,
                     'percentage': (unknown_status_count / total_devices_count) * 100 if total_devices_count > 0 else 0
@@ -169,20 +176,22 @@ def create_reports(subfolder_reports, dir_path_reports, path_origin_directory:st
                 for status, count in statuses.items():
                     percentage_status = (count / total_device_count) * 100 if total_device_count > 0 else 0
                     report.write(f"    {status}: {count} ({percentage_status:.2f}%)\n")
-            
+
             # Include the summary section for faulty devices at the end of the report
             report.write("\n********** SUMMARY OF FAULTY DEVICES BY MISSION: **********\n")
             for mission, info in faulty_devices_summary.items():
-                report.write(f"  {mission}: {info['count']} occurrences ({info['percentage']:.2f}%)\n")     
-                
-        print(f"Report file '{report_file_name}' created successfully.")
+                report.write(f"  {mission}: {info['count']} occurrences ({info['percentage']:.2f}%)\n")
+
+            logging.info(f"Report file '{report_file_name}' created successfully.")
         # Validación de movimiento de carpeta de simulación
         if value_folder == "":
             value_folder = simulation_name_for_folder
         if value_folder != simulation_name_for_folder:
             dir_path_simulator = os.path.join(path_origin_directory, value_folder)
             shutil.move(dir_path_simulator, path_destination_directory)
+            logging.info(f"Moved simulation folder '{value_folder}' to '{path_destination_directory}'.")
             value_folder = simulation_name_for_folder
     if value_folder != "":
         dir_path_simulator = os.path.join(path_origin_directory, value_folder)
         shutil.move(dir_path_simulator, path_destination_directory)
+        logging.info(f"Moved simulation folder '{value_folder}' to '{path_destination_directory}'.")
