@@ -1,14 +1,15 @@
 from tools import Tools
 from generate_data.date import generate_date
-from generate_data.device_status import generate_device_status 
+from generate_data.device_status import generate_device_status
 from generate_data.device import generate_device
-from generate_data.mission import  Mission_Generator
+from generate_data.mission import Mission_Generator
 from generate_data.hash import generate_hash
 import random
 import os
 import json
 
-class DataGenerator():         
+
+class DataGenerator(): 
     @staticmethod
     def generate_data(dir_path):
 
@@ -24,8 +25,7 @@ class DataGenerator():
             now_date: str = generate_date()
             device: str = "unknown"
             device_status: str = "unknown"
-            
-        else: 
+        else:
             now_date: str = generate_date()
             device: str = generate_device()
             device_status: str = generate_device_status()
@@ -34,11 +34,11 @@ class DataGenerator():
         prefix = Tools.dict_content['details_name_files']['prefix']
         separator = Tools.dict_content['details_name_files']['separator']
         sequence_min = Tools.dict_content['details_name_files']['sequence_min']
-        sequence_max =  Tools.dict_content['details_name_files']['sequence_max']
+        sequence_max = Tools.dict_content['details_name_files']['sequence_max']
         extension = Tools.dict_content['details_name_files']['extension']
         name_file = f"{prefix}{mission}{separator}{random.randint(sequence_min, sequence_max)}{extension}"
         full_path = os.path.join(dir_path, name_file)
-    
+
         with open(full_path, 'w') as file:
             data = {
                 'Date': now_date,
@@ -47,7 +47,7 @@ class DataGenerator():
                 'Device Status': device_status,
                 'Hash': hash
             }
-            json.dump(data, file, indent = 4)   
+            json.dump(data, file, indent=4)
 
     @property
     def dir_path(self):

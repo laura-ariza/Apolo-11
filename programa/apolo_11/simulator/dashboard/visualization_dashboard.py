@@ -4,7 +4,9 @@ from tabulate import tabulate
 import pandas as pd
 from tools import Tools
 
+
 class DashboardApolo11():
+
     def __init__(self, json_path: str):
         """
         Initialize the DashboardApolo11 with a DataFrame from a JSON file.
@@ -17,12 +19,12 @@ class DashboardApolo11():
         """
         # Use class method
         self.data: pd.DataFrame = DataFrame.json(json_path)
-        
+
         # Get column names
         self.columns: List[str] = self.data.columns.tolist()
 
         # Change date format
-        self.data['Date'] = pd.to_datetime(self.data['Date'], format = Tools.dict_content['date_format'])
+        self.data['Date'] = pd.to_datetime(self.data['Date'], format=Tools.dict_content['date_format'])
 
     def calculate_percentage(self) -> None:
         """
@@ -118,7 +120,7 @@ class DashboardApolo11():
 
         # Count the number of device statuses by device
         device_status_counts = filter.groupby(['Device', 'Device Status']).size().unstack(fill_value=0)
-        
+
         # Create DataFrame
         df_device_status = pd.DataFrame(device_status_counts)
 
@@ -131,4 +133,3 @@ class DashboardApolo11():
         # Print the result
         print("\n********************  Number of Device Status by Device  ******************** \n")
         print(tabulate(df_device_status, headers=header, tablefmt='pretty'))
-

@@ -37,7 +37,7 @@ def threading_simulation(dir_simulation: Directory) -> None:
     """Initializes a simulation thread in parallel of the entire simulation process
 
     Args:
-        dir_simulation (Directory): It is an object that contains the directory 
+        dir_simulation (Directory): It is an object that contains the directory
         information of the current simulation
     """
     Tools.count_executed = 1
@@ -72,7 +72,7 @@ def run_simulation() -> None:
 
 def run_reports() -> None:
     """Starts the generation of reports with the previously created files and saves
-    them in a defined directory, also moving the processed information to the backups 
+    them in a defined directory, also moving the processed information to the backups
     directory and creates the dashboard.json file
     """
     print("Report generated  to path --> ", Tools.dict_directories['dir_devices'].name_path)
@@ -120,17 +120,17 @@ def menu():
 
 
 def information_program() -> None:
-    """It is a command line argument parser, it allows better interaction 
+    """It is a command line argument parser, it allows better interaction
     with the users when executing the program
     """
     parse = argparse.ArgumentParser(
-        prog = 'Apollo 11',
-        description = "Simulator to missions",
-        epilog = "To infinity and beyond!!!"
+        prog= 'Apollo 11',
+        description= "Simulator to missions",
+        epilog= "To infinity and beyond!!!"
     )
-    parse.add_argument('-v', '--version',  help='show version to simulator', required=False)
-    parse.add_argument('-nasa',  help='change init simulation', required=False)
-    parse.add_argument('-rocket',  help='change init simulation', required=False)
+    parse.add_argument('-v', '--version', help='show version to simulator', required=False)
+    parse.add_argument('-nasa', help='change init simulation', required=False)
+    parse.add_argument('-rocket', help='change init simulation', required=False)
     args = parse.parse_args()
     if args.version:
         print("Simulator to version 1.0.0")
@@ -138,20 +138,17 @@ def information_program() -> None:
     elif args.nasa:
         nv_nasa = SpacecraftNasa(
             Tools.dict_content['spacecraft_options']['name_nasa'],
-            Tools.dict_content['spacecraft_options']['slogan_nasa']
-            )
+            Tools.dict_content['spacecraft_options']['slogan_nasa'])
         nv_nasa.draw_spacecraft()
     elif args.rocket:
         nv_rocket = SpacecraftRocket(
             Tools.dict_content['spacecraft_options']['name_rocket'],
-            Tools.dict_content['spacecraft_options']['slogan_rocket']
-            )
+            Tools.dict_content['spacecraft_options']['slogan_rocket'])
         nv_rocket.draw_spacecraft()
     else:
         nv_default = SpacecraftDefault(
             Tools.dict_content['spacecraft_options']['name_default'],
-            Tools.dict_content['spacecraft_options']['slogan_default']
-            )
+            Tools.dict_content['spacecraft_options']['slogan_default'])
         nv_default.draw_spacecraft()
 
 
