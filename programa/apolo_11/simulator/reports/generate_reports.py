@@ -6,6 +6,16 @@ import shutil
 
 
 def extract_all_keys(file_path):
+    """Extract all keys from a JSON file.
+
+    Args:
+        file_path (str): The path to the JSON file.
+
+    Returns:
+        dict: A dictionary containing the keys and values from the JSON file.
+            Returns None if there is an error decoding JSON.
+
+    """
     with open(file_path, 'r') as file:
         try:
             data = json.load(file)
@@ -16,6 +26,15 @@ def extract_all_keys(file_path):
 
 
 def process_files(directory):
+    """Process log files in a directory and generate a summary.
+
+    Args:
+        directory (str): The directory containing log files.
+
+    Returns:
+        dict: A dictionary containing the summary data, device counts, and subfolder names.
+
+    """
     subfolder_reports = {}
     count_reports = 0
     for root, dirs, files in os.walk(directory):
@@ -61,6 +80,18 @@ def process_files(directory):
 
 
 def create_reports(subfolder_reports, dir_path_reports, path_origin_directory:str, path_destination_directory:str):
+    """
+    Creates reports from the processed data.
+
+    Args:
+        subfolder_reports (dict): A dictionary containing subfolder-wise reports.
+        dir_path_reports (str): The path to the directory to store the reports.
+        path_origin_directory (str): The path to the original directory.
+        path_destination_directory (str): The path to the destination directory.
+
+    Returns:
+        None
+    """
     value_folder = ""
     for subfolder_name, data in subfolder_reports.items():
         summary_data = data["summary"]
