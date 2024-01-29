@@ -2,7 +2,7 @@
 from generate import DataGenerator
 import reports.generate_reports as generate_reports
 from generate_files.directory import Directory
-# from dashboard.generate_dashboard import Dashboard
+from dashboard.visualization_dashboard import DashboardApolo11
 from tools import Tools
 
 # python library
@@ -71,7 +71,13 @@ def run_reports():
 
 def run_dashboard():
     # Dashboard.generate_dashboard()
-    return
+    path_json_dashboard = path.join(Tools.dict_directories['dir_files'].name_path, 'dashboard.json')
+    dashboard_apolo_11 = DashboardApolo11(path_json_dashboard)
+    dashboard_apolo_11.calculate_percentage()
+    dashboard_apolo_11.missions_by_simulation()
+    dashboard_apolo_11.device_by_mission()
+    dashboard_apolo_11.device_status_by_device()
+    
 
 
 def menu():

@@ -1,5 +1,5 @@
 from typing import List, Union
-from dataframe_dashboard import DataFrame
+from dashboard.dataframe_dashboard import DataFrame
 from tabulate import tabulate
 import pandas as pd
 from tools import Tools
@@ -24,7 +24,7 @@ class DashboardApolo11():
         # Change date format
         self.data['Date'] = pd.to_datetime(self.data['Date'], format = Tools.dict_content['date_format'])
 
-    def calculate_percentage(self, columns: List[str]) -> None:
+    def calculate_percentage(self) -> None:
         """
         Calculate and print the percentage and number of reports for each column in the DataFrame.
 
@@ -34,7 +34,8 @@ class DashboardApolo11():
         Returns:
         - None
         """
-        for c in columns:
+        print(self.columns)
+        for c in self.columns:
             print(f"\n********************  Percentage and Number of Reports by {c} ******************** \n")
             # Calculate percentage
             percentage = (self.data[c].value_counts() / self.data[c].value_counts().sum()) * 100
