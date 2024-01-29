@@ -37,4 +37,13 @@ option_device:
 
 date_format: "%d-%m-%Y %H:%M:%S"
 
+spacecraft_options:
+  name_default: !!str "-----APOLLO 11 SPACECRAFT-----"
+  slogan_default: !!str "To infinity and beyond!!!"
+  name_nasa: !!str "-----NASA'S APOLLO 11 SPACECRAFT-----"
+  slogan_nasa: !!str "We are an impossibility in an impossible universe. (Ray Bradbury)"
+  name_rocket: !!str "-----APOLLO 11 SPACECRAFT IN CO ROCKET ASSOCIATION-----"
+  slogan_rocket: !!str "Somewhere, something incredible is waiting to be discovered. (Carl Sagan)"
+  
+
 
