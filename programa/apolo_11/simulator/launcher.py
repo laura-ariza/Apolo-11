@@ -88,7 +88,7 @@ def menu():
   |,-'--|--'-.|
     """)
 
-    print("¡Welcome to Apollo 11!", "1. Start a new simulation", "2. Generate reports", "3. Dashborad", "4. Salir", sep="\n")
+    print("¡Welcome to Apollo 11!", "1. Start a new simulation", "2. Generate reports", "3. Dashboard", "4. Exit", sep="\n")
     option = input("Type an option:")
     if option == "1":
         run_simulation()
