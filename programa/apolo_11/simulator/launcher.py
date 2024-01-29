@@ -124,9 +124,9 @@ def information_program() -> None:
     with the users when executing the program
     """
     parse = argparse.ArgumentParser(
-        prog= 'Apollo 11',
-        description= "Simulator to missions",
-        epilog= "To infinity and beyond!!!"
+        prog='Apollo 11',
+        description="Simulator to missions",
+        epilog="To infinity and beyond!!!"
     )
     parse.add_argument('-v', '--version', help='show version to simulator', required=False)
     parse.add_argument('-nasa', help='change init simulation', required=False)
@@ -157,7 +157,7 @@ def main():
     This preloads the settings and prints the simulation menu
     """
     # load configuration file linked with dict_content tool dictionary
-    dir_path = path.join(Tools.path_absolut(), 'config','config.yaml')
+    dir_path = path.join(Tools.path_absolut(), 'config', 'config.yaml')
     Tools.dict_content = Tools.read_yaml(dir_path)
 
     information_program()

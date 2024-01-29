@@ -40,15 +40,13 @@ class DashboardApolo11():
         Returns:
         - None
         """
-        
+
         for c in self.columns:
             print(f"\n********************  Percentage and Number of Reports by {c} ******************** \n")
-            
+
             # Check if the current column is 'Hash'
             if c == 'Hash':
                 # Calculate the percentage
-                percentage_series: pd.Series = self.data[c].value_counts() / self.data[c].value_counts().sum() * 100
-                hash_names: pd.Series = self.data[c]
                 Total_hash: int = self.data[c].value_counts().sum()
 
                 # Calculate the sum for 'unknown' and 'others'
@@ -67,7 +65,11 @@ class DashboardApolo11():
                 })
 
                 # Print the formatted table without indices
-                result_table: str = tabulate(df_result, headers=[c, 'Percentage', '# Reports'], tablefmt='pretty', showindex=False)
+                result_table: str = tabulate(
+                    df_result,
+                    headers=[c, 'Percentage', '# Reports'],
+                    tablefmt='pretty',
+                    showindex=False)
                 print(result_table)
             else:
                 # Calculate percentage for non-'Hash' columns
@@ -102,7 +104,7 @@ class DashboardApolo11():
 
         # Calculate the percentage
         mission_percentage = mission_counts.div(mission_counts.sum(axis=1), axis=0) * 100
-        
+
         # Format the percentage with two decimals
         format_percentage: pd.Series = mission_percentage.map("{:.2f} %".format)
 
@@ -119,7 +121,6 @@ class DashboardApolo11():
         print("\n********************  Percentage of Missions by Simulation  ******************** \n")
         print(tabulate(df_percentage, headers=header, tablefmt='pretty'))
 
-
     def device_by_mission(self) -> None:
         """
         Print the percentage of devices by mission.
@@ -132,10 +133,10 @@ class DashboardApolo11():
 
         # Count the number of devices by mission
         device_counts = filter.groupby(['Mission', 'Device']).size().unstack(fill_value=0)
-        
+
         # Calculate the percentage
         device_percentage = device_counts.div(device_counts.sum(axis=1), axis=0) * 100
-        
+
         # Format the percentage with two decimals
         format_percentage: pd.Series = device_percentage.map("{:.2f} %".format)
 
@@ -167,7 +168,7 @@ class DashboardApolo11():
 
         # Calculate the percentage
         device_status_percentage = device_status_counts.div(device_status_counts.sum(axis=1), axis=0) * 100
-        
+
         # Format the percentage with two decimals
         format_percentage: pd.Series = device_status_percentage.map("{:.2f} %".format)
 

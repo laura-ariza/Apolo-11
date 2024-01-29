@@ -29,13 +29,13 @@ class Mission_Generator:
         Returns:
             Tuple[str, str]: Randomly selected mission and its value.
         """
-        
+
         try:
             mission = random.choice(list(self._mission_options.values()))
             value_mission = [key for key, value in self._mission_options.items() if value == mission][0]
             logging.info("Mission generated successfully.")
             return mission, value_mission
-        
+
         except Exception as e:
             logging.error(f"An error occurred: {e}")
 
@@ -47,4 +47,3 @@ class Mission_Generator:
             str: String representation of Mission_Generator.
         """
         return f"Mission_Generator instance with options: {self._mission_options}"
-

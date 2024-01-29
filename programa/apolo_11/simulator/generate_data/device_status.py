@@ -1,8 +1,11 @@
 from tools import Tools
-import random 
+import random
 import logging
 
-logging.basicConfig(filename='device_status.log', level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
+logging.basicConfig(
+    filename='device_status.log',
+    level=logging.DEBUG,
+    format='%(asctime)s - %(levelname)s - %(message)s')
 
 
 def generate_device_status() -> str:
@@ -10,18 +13,17 @@ def generate_device_status() -> str:
 
     Returns:
         str: A random device status from a list of options.
-    
+
     Raises:
         Exception: If an error occurs during device status generation.
     """
     try:
         # List of device status
         option_status: list[str] = Tools.dict_content['option_status']
-        
-        # Device status randomization 
+
+        # Device status randomization
         device_status: str = random.choice(option_status)
         logging.info("Device status generated successfully.")
         return device_status
     except Exception as e:
         logging.error(f"An error occurred: {e}")
-        

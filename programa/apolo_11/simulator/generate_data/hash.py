@@ -4,7 +4,7 @@ import logging
 logging.basicConfig(filename='hash.log', level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
 
 
-def generate_hash(now_date, value_mission, device, device_status) ->str:
+def generate_hash(now_date, value_mission, device, device_status) -> str:
     """This function generates a hash based on the input parameters.
 
     Args:
@@ -15,14 +15,14 @@ def generate_hash(now_date, value_mission, device, device_status) ->str:
 
     Returns:
         str: The hash value.
-        
+
     Raises:
         Exception: If an error occurs during hash generation.
     """
     try:
         # Concatenate relevant data to generate the hash
         hash_data = f"{now_date}{value_mission}{device}{device_status}"
-        
+
         # Apply hash SHA-256 to concatenated data
         hash_result = hashlib.sha256(hash_data.encode()).hexdigest()
         logging.info("Hash generated successfully.")

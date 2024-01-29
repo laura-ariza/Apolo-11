@@ -9,7 +9,7 @@ def generate_date() -> str:
     format of "dd-mm-yyyy HH:MM:SS"
     Returns:
         str: A current date and time in the given format
-    
+
     Raises:
         Exception: If an error occurs during date generation.
     """

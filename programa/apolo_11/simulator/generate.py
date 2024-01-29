@@ -9,7 +9,7 @@ import os
 import json
 
 
-class DataGenerator(): 
+class DataGenerator():
     @staticmethod
     def generate_data(dir_path):
 

@@ -20,7 +20,7 @@ class Tools(object):
     @staticmethod
     def read_yaml(file_path: str) -> Dict[str, str]:
         """Reads the configuration file and loads it into the general purpose dictionary (dict_content)
-        
+
         Args:
             file_path (str): Receives the path of the .yaml file
 
@@ -28,7 +28,6 @@ class Tools(object):
             Dict[str, str]: Returns a dictionary with the contents of the .yaml file
         """
         content: dict = {}
-        
         try:
             with open(file_path) as file_config:
                 content = yaml.load(file_config, Loader=yaml.SafeLoader)
@@ -38,7 +37,8 @@ class Tools(object):
 
     @staticmethod
     def write_json_reports(full_dic_report: Dict[str, str], file_path: str) -> None:
-        """Adds or updates the dictionary information received by parameter in the "files" path and converts it to a file in .json format
+        """Adds or updates the dictionary information received by parameter in the "files"
+        path and converts it to a file in .json format
 
         Args:
             full_dic_report (dict): Contains the information of the generated reports
