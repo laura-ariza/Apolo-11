@@ -105,7 +105,7 @@ def menu():
           "1. Start a new simulation",
           "2. Generate reports",
           "3. Dashborad",
-          "4. Salir",
+          "4. Exit",
           sep="\n")
     option = input("Type an option:")
     if option == "1":

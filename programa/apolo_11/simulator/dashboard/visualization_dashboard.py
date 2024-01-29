@@ -30,35 +30,66 @@ class DashboardApolo11():
         """
         Calculate and print the percentage and number of reports for each column in the DataFrame.
 
+        This method iterates through each column in the DataFrame and calculates the percentage
+        along with the number of reports. For the 'Hash' column, it performs additional calculations
+        for 'unknown' and 'others' categories.
+
         Parameters:
         - columns (List[str]): The list of columns for which to calculate percentages.
 
         Returns:
         - None
         """
-        print(self.columns)
+        
         for c in self.columns:
             print(f"\n********************  Percentage and Number of Reports by {c} ******************** \n")
-            # Calculate percentage
-            percentage = (self.data[c].value_counts() / self.data[c].value_counts().sum()) * 100
+            
+            # Check if the current column is 'Hash'
+            if c == 'Hash':
+                # Calculate the percentage
+                percentage_series: pd.Series = self.data[c].value_counts() / self.data[c].value_counts().sum() * 100
+                hash_names: pd.Series = self.data[c]
+                Total_hash: int = self.data[c].value_counts().sum()
 
-            # Calculate count
-            count = self.data[c].value_counts()
+                # Calculate the sum for 'unknown' and 'others'
+                sum_unk: int = self.data.loc[self.data[c] == 'unknown', c].value_counts().sum()
+                sum_others: int = self.data.loc[self.data[c] != 'unknown', c].value_counts().sum()
 
-            # Format the percentage with two decimals
-            format_percentage = percentage.map("{:.2f} %".format)
+                # Calculate the percentages
+                percentage_sum: float = (sum_unk / Total_hash) * 100
+                percentage_others: float = (sum_others / Total_hash) * 100
 
-            # Create a DataFrame for the format
-            df_percentage = pd.DataFrame({'Percentage': format_percentage, 'Count': count})
+                # Create a DataFrame for tabular presentation
+                df_result: pd.DataFrame = pd.DataFrame({
+                    c: ['unknown', 'others'],
+                    'Percentage': [f'{percentage_sum:.2f}%', f'{percentage_others:.2f}%'],
+                    '# Reports': [sum_unk, sum_others]
+                })
 
-            result = tabulate(df_percentage, headers=[c, 'Percentage', '# Reports'], tablefmt='pretty')
+                # Print the formatted table without indices
+                result_table: str = tabulate(df_result, headers=[c, 'Percentage', '# Reports'], tablefmt='pretty', showindex=False)
+                print(result_table)
+            else:
+                # Calculate percentage for non-'Hash' columns
+                percentage: pd.Series = (self.data[c].value_counts() / self.data[c].value_counts().sum()) * 100
 
-            # Print the result
-            print(result)
+                # Calculate count
+                count: pd.Series = self.data[c].value_counts()
+
+                # Format the percentage with two decimals
+                format_percentage: pd.Series = percentage.map("{:.2f} %".format)
+
+                # Create a DataFrame for the format
+                df_percentage: pd.DataFrame = pd.DataFrame({'Percentage': format_percentage, 'Count': count})
+
+                result: str = tabulate(df_percentage, headers=[c, 'Percentage', '# Reports'], tablefmt='pretty')
+
+                # Print the result
+                print(result)
 
     def missions_by_simulation(self) -> None:
         """
-        Print the number of missions by simulation.
+        Print the percentage of missions by simulation.
 
         Returns:
         - None
@@ -69,22 +100,29 @@ class DashboardApolo11():
         # Count the number of missions by simulation
         mission_counts = filter_df.groupby(['Simulation', 'Mission']).size().unstack(fill_value=0)
 
-        # Create DataFrame
-        df_mission = pd.DataFrame(mission_counts)
+        # Calculate the percentage
+        mission_percentage = mission_counts.div(mission_counts.sum(axis=1), axis=0) * 100
+        
+        # Format the percentage with two decimals
+        format_percentage: pd.Series = mission_percentage.map("{:.2f} %".format)
+
+        # Create DataFrame with percentages
+        df_percentage = pd.DataFrame(format_percentage)
 
         # Get column names
-        columns: List[str] = df_mission.columns.tolist()
+        columns: List[str] = df_percentage.columns.tolist()
 
         # Column list
         header: List[Union[str, List[str]]] = ['Simulation'] + columns
 
         # Print the result
-        print("\n********************  Number of Missions by Simulation  ******************** \n")
-        print(tabulate(df_mission, headers=header, tablefmt='pretty'))
+        print("\n********************  Percentage of Missions by Simulation  ******************** \n")
+        print(tabulate(df_percentage, headers=header, tablefmt='pretty'))
+
 
     def device_by_mission(self) -> None:
         """
-        Print the number of devices by mission.
+        Print the percentage of devices by mission.
 
         Returns:
         - None
@@ -94,9 +132,15 @@ class DashboardApolo11():
 
         # Count the number of devices by mission
         device_counts = filter.groupby(['Mission', 'Device']).size().unstack(fill_value=0)
+        
+        # Calculate the percentage
+        device_percentage = device_counts.div(device_counts.sum(axis=1), axis=0) * 100
+        
+        # Format the percentage with two decimals
+        format_percentage: pd.Series = device_percentage.map("{:.2f} %".format)
 
-        # Create DataFrame
-        df_device = pd.DataFrame(device_counts)
+        # Create DataFrame with percentages
+        df_device = pd.DataFrame(format_percentage)
 
         # Get column names
         columns: List[str] = df_device.columns.tolist()
@@ -105,12 +149,12 @@ class DashboardApolo11():
         header: List[Union[str, List[str]]] = ['Mission'] + columns
 
         # Print the result
-        print("\n********************  Number of Device by Mission  ******************** \n")
+        print("\n********************  Percentage of Device by Mission  ******************** \n")
         print(tabulate(df_device, headers=header, tablefmt='pretty'))
 
     def device_status_by_device(self) -> None:
         """
-        Print the number of device statuses by device.
+        Print the percentage of device statuses by device.
 
         Returns:
         - None
@@ -121,8 +165,14 @@ class DashboardApolo11():
         # Count the number of device statuses by device
         device_status_counts = filter.groupby(['Device', 'Device Status']).size().unstack(fill_value=0)
 
-        # Create DataFrame
-        df_device_status = pd.DataFrame(device_status_counts)
+        # Calculate the percentage
+        device_status_percentage = device_status_counts.div(device_status_counts.sum(axis=1), axis=0) * 100
+        
+        # Format the percentage with two decimals
+        format_percentage: pd.Series = device_status_percentage.map("{:.2f} %".format)
+
+        # Create DataFrame with percentages
+        df_device_status = pd.DataFrame(format_percentage)
 
         # Get column names
         columns: List[str] = df_device_status.columns.tolist()
@@ -131,5 +181,5 @@ class DashboardApolo11():
         header: List[Union[str, List[str]]] = ['Device'] + columns
 
         # Print the result
-        print("\n********************  Number of Device Status by Device  ******************** \n")
+        print("\n********************  Percentage of Device Status by Device  ******************** \n")
         print(tabulate(df_device_status, headers=header, tablefmt='pretty'))
