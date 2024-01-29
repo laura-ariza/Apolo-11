@@ -17,7 +17,7 @@ class Directory:
         else:
             self.__name_path__ = os.path.join(name_path, name)
         self.__state__ = False
-        self.create_directory()
+        self.__create_directory()
                 
     @property
     def name_path(self) -> str:
@@ -38,7 +38,7 @@ class Directory:
         """
         return self.__state__
     
-    def create_directory(self) -> None:
+    def __create_directory(self) -> None: # Using encapsulation via a private object
         """Allows the creation of a new folder
         """
         if not os.path.isdir(self.__name_path__):

@@ -4,6 +4,7 @@ programa/apolo_11/simulator/generate_data/__pycache__/
 programa/apolo_11/simulator/generate_files/__pycache__/
 programa/apolo_11/simulator/reports/__pycache__/
 programa/apolo_11/simulator/dashboard/__pycache__/
+programa/apolo_11/simulator/options_spacecraft/__pycache__/
 
 # Ignore devices path
 programa/apolo_11/simulator/files/
