@@ -15,3 +15,9 @@ programa/apolo_11/date.log
 programa/apolo_11/simulator/date.log
 programa/apolo_11/simulator/reports/date.log
 
+# Ignore imagen
+image.png
+image-1.png
+image-2.png
+colors.png
+
