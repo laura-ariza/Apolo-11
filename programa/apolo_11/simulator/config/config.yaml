@@ -35,4 +35,7 @@ option_device:
   - "suits"
   - "vehicles"
 
+date_format:
+  - "%d-%m-%Y %H:%M:%S"
+
 
